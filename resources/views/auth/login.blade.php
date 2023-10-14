@@ -41,7 +41,6 @@
             @endif
         </div>
 
-
         <x-primary-button class="w-full justify-center h-10">
             {{ __('Log in') }}
         </x-primary-button>

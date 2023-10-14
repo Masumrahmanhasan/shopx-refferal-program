@@ -3,41 +3,40 @@
     @csrf
 
         <div>
-            <x-input-label for="name" :value="__('Referrel ID')"/>
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="refferal" :value="old('refferal') ?? request('ref')" required
-                          autofocus autocomplete="name"/>
-            <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+            <x-input-label for="referral_id" :value="__('Referrel ID')"/>
+            <x-text-input id="referral_id" class="block mt-1 w-full" type="text" name="referral_id" :value="old('refferal') ?? request('ref')" required
+                          autofocus autocomplete="referral_id"/>
+            <x-input-error :messages="$errors->get('referral_id')" class="mt-2"/>
         </div>
 
         <div class="flex justify-between mt-4 gap-4">
             <div class="w-full">
-                <x-input-label for="name" :value="__('First Name')"/>
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="refferal" :value="old('name')"
-                              required
-                              autofocus autocomplete="name"/>
-                <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                <x-input-label for="first_name" :value="__('First Name')"/>
+                <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')"
+                              autofocus autocomplete="first_name"/>
+                <x-input-error :messages="$errors->get('first_name')" class="mt-2"/>
             </div>
 
             <div class="w-full">
-                <x-input-label for="name" :value="__('Last Name')"/>
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
-                              autofocus autocomplete="name"/>
-                <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                <x-input-label for="last_name" :value="__('Last Name')"/>
+                <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required
+                              autofocus autocomplete="last_name"/>
+                <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
             </div>
 
         </div>
 
         <div class="mt-4">
-            <x-input-label for="name" :value="__('Phone')"/>
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
-                          autofocus autocomplete="name"/>
-            <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+            <x-input-label for="phone" :value="__('Phone')"/>
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required
+                          autofocus autocomplete="phone"/>
+            <x-input-error :messages="$errors->get('phone')" class="mt-2"/>
         </div>
 
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')"/>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                          autocomplete="username"/>
+                          autocomplete="email"/>
             <x-input-error :messages="$errors->get('email')" class="mt-2"/>
         </div>
 
