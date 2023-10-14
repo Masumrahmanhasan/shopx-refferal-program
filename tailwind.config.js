@@ -26,7 +26,10 @@ export default {
                     700: '#3C1955',  // Even darker shade
                     800: '#260823',
                 }
-            }
+            },
+            flex: {
+                '320': '0 0 320px',
+            },
         },
         screens: {
             'sm': '640px',
