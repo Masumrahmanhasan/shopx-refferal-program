@@ -8,3 +8,10 @@
     }
 }
 
+.user-menu:hover a >  svg * {
+    fill: #fff;
+}
+
+.active a >  svg * {
+    fill: #fff;
+}

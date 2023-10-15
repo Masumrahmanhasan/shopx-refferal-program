@@ -4,7 +4,6 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-
                 <button x-data="{ isOpen: false }"
                         data-drawer-target="logo-sidebar"
                         data-drawer-toggle="logo-sidebar"

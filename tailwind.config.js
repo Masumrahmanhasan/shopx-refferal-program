@@ -19,7 +19,7 @@ export default {
                     50: '#7F4DCA',
                     100: '#E8E4F6',  // Lightest tint
                     200: '#C4B8E9',  // Light tint
-                    300: '#9F8BDD',  // Slightly lighter tint
+                    300: '#ccb8ea',  // Slightly lighter tint
                     400: '#7F4DCA',  // The base color
                     500: '#693CA9',  // Slightly darker shade
                     600: '#522A87',  // Darker shade
