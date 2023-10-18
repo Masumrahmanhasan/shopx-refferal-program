@@ -1,4 +1,4 @@
-<div class="relative bg-white border-1 z-1 sm:rounded-lg max-w-xs flex-320 shadow">
+<div class="relative bg-white border-1 z-1 sm:rounded-lg max-w-xs flex-320 shadow sidenav">
     <div class="overflow-auto px-6 pb-6">
         <div class="avatar p-6 text-center mb-6 relative border-b border-gray-300">
             <span
@@ -11,6 +11,11 @@
 
             <h4 class="h5 fs-14 mb-1 fw-700 text-dark">{{ Auth::user()->username }}</h4>
             <div class="text-truncate opacity-60 fs-12">Joined: {{ Auth::user()->created_at }}</div>
+            <div class="text-truncate opacity-60 fs-12 font-semibold">Sponsored By:
+                <span>
+                    {{ Auth::user()->referral_id }}
+                </span></div>
+
         </div>
 
         <div class="sidemnenu">
@@ -46,6 +51,127 @@
                             </g>
                         </svg>
                         <span class="aiz-side-nav-text ml-3">My Profile</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'wallet') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('wallet') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">My Balance</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'task') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('task') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">My Profit Work</span>
+                    </a>
+                </li>
+
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'freelance') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('profile.edit') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">Freelancing (Coming soon)</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'Transfer') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('profile.edit') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">Transfer Balance (Coming soon)</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'referrel.index') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('referrel.index') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">Refferel</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'payment') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('profile.edit') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">Payment</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'support.index') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('support.index') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">Support</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if(Route::currentRouteName() === 'wallet') bg-purple_light-50 text-white active @endif">
+                    <a href="{{ route('profile.edit') }}"
+                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                       aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                             class="hover:fill-dark">
+                            <g id="Group_8094" data-name="Group 8094" transform="translate(3176 -602)">
+                                <path id="Path_2924" data-name="Path 2924" d="M331.144,0a4,4,0,1,0,4,4,4,4,0,0,0-4-4m0,7a3,3,0,1,1,3-3,3,3,0,0,1-3,3" transform="translate(-3499.144 602)" fill="#b5b5bf"></path>
+                                <path id="Path_2925" data-name="Path 2925" d="M332.144,20h-10a3,3,0,0,0,0,6h10a3,3,0,0,0,0-6m0,5h-10a2,2,0,0,1,0-4h10a2,2,0,0,1,0,4" transform="translate(-3495.144 592)" fill="#b5b5bf"></path>
+                            </g>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-3">FAQ</span>
                     </a>
                 </li>
 

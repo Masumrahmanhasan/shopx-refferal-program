@@ -6,6 +6,9 @@
     .sm-fixed {
         position: fixed;
     }
+    .sidenav {
+        display: none;
+    }
 }
 
 .user-menu:hover a >  svg * {

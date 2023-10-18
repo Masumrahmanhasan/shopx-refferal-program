@@ -55,6 +55,8 @@ class User extends Authenticatable
         'username' => 'string'
     ];
 
+    protected $dates = ['created_at'];
+
     public function username(): Attribute
     {
         return Attribute::make(
@@ -62,7 +64,7 @@ class User extends Authenticatable
         );
     }
 
-    public function created_at(): Attribute
+    public function created_at($value): Attribute
     {
         return Attribute::make(
             get: fn () => Carbon::parse($value)->isoFormat('MMMM Do YYYY')

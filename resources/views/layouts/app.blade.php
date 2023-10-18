@@ -15,30 +15,64 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased">
-<div class="min-h-screen bg-gray-100">
-@include('layouts.navigation')
+    <div class="min-h-screen bg-gray-100">
+    @include('layouts.navigation')
 
-<!-- Page Heading -->
-    @if (isset($header))
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-    @endif
+    <!-- Page Heading -->
+        @if (isset($header))
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
+        @endif
 
-<!-- Page Content -->
-    <main>
+    <!-- Page Content -->
+        <main>
+            <div class="py-4">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:pl-3 sm:pr-3">
+                    <div class="w-full p-6 mx-auto rounded-lg shadow-lg bg-gradient-to-r from-blue-400 to-purple-500">
+                        <div class="flex items-center justify-between b-2">
+                            <div class="flex justify-between items-center">
+                                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-2">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round"
+                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M20 4a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
+                                        <path d="M11 5h2M12 12v2m0 4h-1"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="sm:text-base text-2xl font-semibold text-white">{{ Auth::user()->username }}, আপনার
+                                        একাউন্ট অ্যাক্টিভ নয়।</h2>
+                                    <p class="sm:text-sm text-white">একাউন্ট অ্যাক্টিভ করতে বাটনে ক্লিক করুন।</p>
+                                </div>
 
-        <div class="py-4">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex items-start mt-4">
-                    @include('layouts.sidenavigation')
-                    {{ $slot }}
+                            </div>
+                            <div class="hidden">
+                                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round"
+                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M20 4a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
+                                        <path d="M11 5h2M12 12v2m0 4h-1"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <!-- Different Button for User Activation -->
+                            <button
+                                class="px-4 py-2 font-semibold bg-pink-600 hover:bg-pink-700 rounded-md text-white transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-pink-300">
+                                Activate Account
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-start mt-4">
+                        @include('layouts.sidenavigation')
+                        {{ $slot }}
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-</div>
+        </main>
+    </div>
+
+
 </body>
 </html>
