@@ -99,6 +99,11 @@
                         Stay updated with the latest news and discussions in our Telegram group.
                     </p>
 
+                    <p class="text-gray-700 text-center mt-4">
+                        আসসালামুয়ালাইকুম/আদাব,
+                        প্রিয়, গ্রাহক- আপনার অবগতির জন্য জানানো যাইতেছে যে, profitwork-bd.com একটি বেকারদের আয়ের অনলাইন প্লাটফর্ম। এখানে 200 টাকা দিয়ে একাউন্ট এক্টিভ করলে আজীবন প্রতিদিন 30 টাকা থেকে সর্বোচ্চ 500 টাকা ইনকাম করতে পারবেন। আপনি যে 200 টাকা দিয়ে একাউন্ট এক্টিভ করবেন এটি (অফেরতযোগ্য) এবং এই টাকা দিয়ে গরীব অসহায় মানুষের কল্যাণে ব্যয় করা হবে, এবং এই সব ব্যায়ের আপডেট আমাদের অফিশিয়াল টেলিগ্রাম গ্রুপে দেখতে পাবেন। আর অতিশ্রীঘই আমাদের ওয়েবসাইটে ফ্রীলান্সিং মেনু এড করা হবে, যা থেকে খুব সহজে প্রতি মাসে 5 থেকে 10 হাজার টাকা বাড়তি আয় করতে পারবেন। আর এছাড়াও রেফার করে 1st জেনারেশন থেকে 3rd জেনারেশন পর্যন্ত কমিশন পাবেন। তাই দেরী না করে একাউন্ট একটিভ করে কাজ শুরু করুন।
+                    </p>
+
                     <!-- Join Button -->
                     <a href="https://t.me/your_telegram_group" class="block bg-blue-500  bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-md transition duration-300 ease-in-out text-white px-4 py-2 rounded-full mt-6 text-center font-semibold hover:bg-blue-600" target="_blank" rel="noopener noreferrer">
                         Join Now
@@ -106,7 +111,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
 

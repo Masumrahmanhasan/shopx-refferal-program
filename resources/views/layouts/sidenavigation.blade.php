@@ -176,21 +176,25 @@
                 </li>
 
                 <li class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu">
-                    <a href="{{ route('profile.edit') }}"
-                       class="flex items-center mb-2 font-bolder px-3 py-2 active"
-                       aria-expanded="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15.999" viewBox="0 0 16 15.999" class="hover:user-menu">
-                            <g id="Group_25503" data-name="Group 25503" transform="translate(-24.002 -377)">
-                                <g id="Group_25265" data-name="Group 25265" transform="translate(-216.534 -160)">
-                                    <path id="Subtraction_192" data-name="Subtraction 192" d="M12052.535,2920a8,8,0,0,1-4.569-14.567l.721.72a7,7,0,1,0,7.7,0l.721-.72a8,8,0,0,1-4.567,14.567Z" transform="translate(-11803.999 -2367)" fill="#b5b5bf"></path>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                        this.closest('form').submit();"
+                           class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                           aria-expanded="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15.999" viewBox="0 0 16 15.999" class="hover:user-menu">
+                                <g id="Group_25503" data-name="Group 25503" transform="translate(-24.002 -377)">
+                                    <g id="Group_25265" data-name="Group 25265" transform="translate(-216.534 -160)">
+                                        <path id="Subtraction_192" data-name="Subtraction 192" d="M12052.535,2920a8,8,0,0,1-4.569-14.567l.721.72a7,7,0,1,0,7.7,0l.721-.72a8,8,0,0,1-4.567,14.567Z" transform="translate(-11803.999 -2367)" fill="#b5b5bf"></path>
+                                    </g>
+                                    <rect id="Rectangle_19022" data-name="Rectangle 19022" width="1" height="8" rx="0.5" transform="translate(31.5 377)" fill="#b5b5bf"></rect>
                                 </g>
-                                <rect id="Rectangle_19022" data-name="Rectangle 19022" width="1" height="8" rx="0.5" transform="translate(31.5 377)" fill="#b5b5bf"></rect>
-                            </g>
-                        </svg>
-                        <span class="aiz-side-nav-text ml-3">Sign Out</span>
-                    </a>
+                            </svg>
+                            <span class="aiz-side-nav-text ml-3">Sign Out</span>
+                        </a>
+                    </form>
                 </li>
-
             </ul>
         </div>
     </div>

@@ -4,7 +4,7 @@
 
         <div>
             <x-input-label for="referral_id" :value="__('Referrel ID')"/>
-            <x-text-input id="referral_id" class="block mt-1 w-full" type="text" name="referral_id" :value="old('refferal') ?? request('ref')" required
+            <x-text-input id="referral_id" class="block mt-1 w-full" type="text" name="referral_id" :value="old('referral_id') ?? request('ref')" required
                           autofocus autocomplete="referral_id"/>
             <x-input-error :messages="$errors->get('referral_id')" class="mt-2"/>
         </div>

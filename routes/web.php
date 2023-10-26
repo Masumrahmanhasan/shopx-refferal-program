@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
     Route::get('/referrel', [ReferrelController::class, 'index'])->name('referrel.index');
     Route::get('/task', [TaskController::class, 'index'])->name('task');
+
 });
 
 require __DIR__.'/auth.php';
+

@@ -5,30 +5,35 @@
         </h2>
     </x-slot>
 
-    <div class="flex-1 sm:pl-0 lg:pl-4">
+    <div class="flex-1 sm:pl-0 md:pl-4 lg:pl-4 gap-1 flex">
+        @for($i = 0; $i < 3; $i++)
+        <div class="w-2/5">
+            <div class="bg-gray-100">
+                <div class="bg-white rounded-lg shadow-md p-3">
+                    <!-- Telegram Image -->
+                    <img src="https://theshopx.net/assets/files/telegram.png" alt="Telegram Icon" class="w-16 h-16 mx-auto mb-4">
 
-        @for($i = 0; $i < 5; $i++)
-        <div class="bg-gradient-to-r from-blue-400 mb-4 p-4 rounded-lg shadow-md text-white to-purple-500">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h2 class="text-xl font-semibold">Support Ticket #12345</h2>
-                    <p class="text-gray-200">Created on Oct 16, 2023</p>
-                </div>
-                <div class="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-4 py-2">
-                    Open
-                </div>
-            </div>
-            <p class="mt-2">This is a brief description of the support ticket. It can provide additional details about the issue or request.</p>
-            <div class="mt-4 flex justify-between items-center">
-                <div>
-                    <span class="text-blue-200">Assigned to:</span> John Doe
-                </div>
-                <div>
-                    <a href="#" class="text-white hover:underline">View Details</a>
+                    <!-- Group Title -->
+                    <h3 class="text-2xl font-semibold text-gray-800 text-center">Join Our Telegram Group</h3>
+
+                    <!-- Group Description -->
+                    <p class="text-gray-600 text-center mt-4">
+                        Stay updated with the latest news and discussions in our Telegram group.
+                    </p>
+
+                    <p class="text-gray-700 text-center mt-4">
+                        আসসালামুয়ালাইকুম/আদাব, ...
+                    </p>
+
+                    <!-- Join Button -->
+                    <a href="https://t.me/your_telegram_group" class="block bg-blue-500 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-md transition duration-300 ease-in-out text-white px-4 py-2 rounded-full mt-6 text-center font-semibold hover:bg-blue-600" target="_blank" rel="noopener noreferrer">
+                        Join Now
+                    </a>
                 </div>
             </div>
         </div>
         @endfor
     </div>
+
 
 </x-app-layout>
