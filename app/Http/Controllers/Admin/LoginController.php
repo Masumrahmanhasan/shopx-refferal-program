@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
-use function Symfony\Component\String\s;
 
 class LoginController extends Controller
 {
@@ -20,23 +22,42 @@ class LoginController extends Controller
     /**
      * @throws ValidationException
      */
-    public function login(LoginRequest $request): void
+    public function login(LoginRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $this->authenticate($request);
+        $user = $this->authenticate($request);
+
+        Auth::login($user);
+
+        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
     }
 
     /**
      * @throws ValidationException
      */
-    public function authenticate(Request $request): void
+    public function authenticate(Request $request)
     {
-        if ($user = ! Auth::attempt($request->only('email', 'password'))) {
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
-            ]);
+        $user = User::query()
+            ->where('email', $request->input('email'))
+            ->where('role', 'admin')
+            ->first();
+
+        if ($user && Hash::check($request->input('password'), $user->password)) {
+            return $user;
         }
 
-        $user = Auth::user();
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed'),
+        ]);
+    }
 
+    public function destroy(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/admin/login');
     }
 }

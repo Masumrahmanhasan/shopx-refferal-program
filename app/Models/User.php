@@ -53,10 +53,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'username' => 'string'
+        'username' => 'string',
     ];
 
-    protected $dates = ['created_at'];
+    protected $appends = ['referral_link', 'sponsored_by'];
 
     public function username(): Attribute
     {
@@ -65,10 +65,33 @@ class User extends Authenticatable
         );
     }
 
-    public function created_at($value): Attribute
+    public function getCreatedAtAttribute($value)
     {
-        return Attribute::make(
-            get: fn () => Carbon::parse($value)->isoFormat('MMMM Do YYYY')
-        );
+        return Carbon::parse($value)->isoFormat('MMMM Do YYYY');
+    }
+
+    public function getReferralLinkAttribute()
+    {
+        return $this->referral_link = route('register', ['ref' => $this->referral_id]);
+    }
+
+    public function getSponsoredByAttribute()
+    {
+        return User::query()
+            ->select('first_name', 'last_name', 'referral_id')
+            ->where('referral_id', $this->referred_by)
+            ->first();
+    }
+
+    public function referrels()
+    {
+        return $this->hasMany(UserReferrel::class);
+    }
+
+    public function avatar()
+    {
+        return $this->morphOne(Media::class, 'parent')->withDefault([
+            'name' => 'https://demo.activeitzone.com/ecommerce/public/assets/img/avatar-place.png'
+        ]);
     }
 }

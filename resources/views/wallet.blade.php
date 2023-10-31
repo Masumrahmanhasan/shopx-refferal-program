@@ -13,7 +13,7 @@
                     <div>
                         <h2 class="text-2xl font-semibold text-gray-800">My Wallet</h2>
                         <div class="mt-4">
-                            <p class="text-lg text-green-600 font-semibold">$5,000.00</p>
+                            <p class="text-lg text-green-600 font-semibold">BDT {{ auth()->user()->balance }}</p>
                             <p class="text-gray-600 text-sm">Available Balance</p>
                         </div>
                     </div>

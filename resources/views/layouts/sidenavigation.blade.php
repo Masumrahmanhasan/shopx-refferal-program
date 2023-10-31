@@ -5,16 +5,22 @@
                 class="relative w-16 h-16 mb-4 rounded-full inline-flex items-center font-semibold justify-center">
                 <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/avatar-place.png"
                      class="w-full h-full rounded-full object-cover" alt="">
-                <span
-                    class="-bottom-1 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-            </span>
+
+                @if(Auth::user()->status === 'active')
+                    <span
+                        class="-bottom-1 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                    </span>
+                @endif
+
 
             <h4 class="h5 fs-14 mb-1 fw-700 text-dark">{{ Auth::user()->username }}</h4>
             <div class="text-truncate opacity-60 fs-12">Joined: {{ Auth::user()->created_at }}</div>
             <div class="text-truncate opacity-60 fs-12 font-semibold">Sponsored By:
                 <span>
-                    {{ Auth::user()->referral_id }}
-                </span></div>
+                    {{ Auth::user()->sponsored_by?->username }}
+                    ({{ Auth::user()->sponsored_by?->referral_id }})
+                </span>
+            </div>
 
         </div>
 

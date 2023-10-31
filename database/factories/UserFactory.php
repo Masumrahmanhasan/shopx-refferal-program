@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->unique()->phoneNumber(),
             'password' => '12345678',
-            'status' => 'active',
+            'status' => fake()->randomElement(['active', 'inactive']),
             'referral_id' => random_int(111111, 999999),
         ];
     }
@@ -38,6 +38,18 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'first_name' => 'Super',
+            'last_name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'status' => 'active',
+            'role' => 'admin',
+            'referral_id' => random_int(111111, 999999),
         ]);
     }
 }

@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
                 'referral_id' => 'Invalid referral code',
             ]);
         }
+
         $user = User::query()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -45,7 +46,12 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'password' => $request->password,
             'referral_id' => random_int(111111, 999999),
+            'referred_by' => $request->input('referral_id'),
             'status' => 'active',
+        ]);
+
+        $referral->referrels()->create([
+            'referrel_id' => $user->id
         ]);
 
         Auth::login($user);

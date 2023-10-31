@@ -6,6 +6,7 @@ use App\Http\Controllers\User\SupportTicketController;
 use App\Http\Controllers\User\WalletController;
 use App\Http\Controllers\User\ReferrelController;
 use App\Http\Controllers\User\TaskController;
+use App\Http\Controllers\User\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -35,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
     Route::get('/referrel', [ReferrelController::class, 'index'])->name('referrel.index');
     Route::get('/task', [TaskController::class, 'index'])->name('task');
+
+    Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 
 });
 
