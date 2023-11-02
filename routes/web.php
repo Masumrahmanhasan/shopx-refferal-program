@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/support-ticket', [SupportTicketController::class, 'index'])->name('support.index');
+    Route::get('/faq', [SupportTicketController::class, 'index'])->name('faq.index');
     Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
     Route::get('/referrel', [ReferrelController::class, 'index'])->name('referrel.index');
     Route::get('/task', [TaskController::class, 'index'])->name('task');
