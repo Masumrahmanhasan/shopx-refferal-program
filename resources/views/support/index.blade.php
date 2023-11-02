@@ -5,9 +5,7 @@
         </h2>
     </x-slot>
 
-    {{-- grid gap-4 md:grid-cols-2 ml-5 lg:grid-cols-3 --}}
-
-    <div class="grid gap-4 md:grid-cols-2 ml-5 lg:grid-cols-3">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
         <!-- Item -->
         <div class="bg-white rounded-lg shadow-md p-5">

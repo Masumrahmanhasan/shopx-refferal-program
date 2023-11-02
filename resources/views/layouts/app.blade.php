@@ -64,7 +64,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="flex items-start mt-4">
+                    <div class="flex items-start mt-4 gap-5">
                         @include('layouts.sidenavigation')
                         {{ $slot }}
                     </div>
