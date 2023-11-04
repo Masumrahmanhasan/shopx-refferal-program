@@ -27,7 +27,7 @@
                         <button type="button"
                             class="sm:w-full lg: w-1/4 focus:outline-none text-gray-400 hover:text-gray-500 py-2 px-1 border-t-2 text-sm tracking-wide font-medium border-transparent rounded-xl mb-6"
                             x-on:click="tab = 1"
-                            :class="{ 'text-gray-700 border-indigo-500 border-2 border-solid border-[#d12053] ': tab === 1 }">
+                            :class="{ 'text-gray-700 border-solid border-2 border-orange-500': tab === 1 }">
 
                             <div class="bg-white shadow-lg rounded-xl">
                                 <img src="/images/bkash.png" alt="" class="w-32 rounded-xl p-4 m-auto">
@@ -39,8 +39,7 @@
                         {{-- Nagod --}}
                         <button type="button"
                             class="sm:w-full lg: w-1/4 focus:outline-none text-gray-400 hover:text-gray-500 py-2 px-1 border-t-2 text-sm tracking-wide font-medium border-transparent rounded-xl mb-6"
-                            x-on:click="tab = 2"
-                            :class="{ 'text-gray-700 border-indigo-500  border-2 border-solid border-[#f6921e]': tab === 2 }">
+                            x-on:click="tab = 2" :class="{ 'text-gray-700 border-2 border-orange-500': tab === 2 }">
 
                             <div class="bg-white shadow-lg rounded-xl">
                                 <img src="/images/nagod.png" alt="" class="w-32 rounded-xl p-4 m-auto">
@@ -52,8 +51,7 @@
                         {{-- Rocket --}}
                         <button type="button"
                             class="sm:w-full lg: w-1/4 focus:outline-none text-gray-400 hover:text-gray-500 py-2 px-1 border-t-2 text-sm tracking-wide font-medium border-transparent rounded-xl mb-6"
-                            x-on:click="tab = 3"
-                            :class="{ 'text-gray-700 border-indigo-500 border-2 border-solid border-[#8c3492]': tab === 3 }">
+                            x-on:click="tab = 3" :class="{ 'text-gray-700 border-2 border-orange-500': tab === 3 }">
 
                             <div class="bg-white shadow-lg rounded-xl">
                                 <img src="/images/rocket.png" alt="" class="w-32 rounded-xl p-4 m-auto">
@@ -148,10 +146,10 @@
                                     নাম্বারটি কপি করে আপনার বিকাশ এপ্স থেকে পাশে উল্লেখিত ফি সেন্ড মানি করুন। আপনার
                                     পেমেন্ট এর পরিমান: ৳100</h3>
 
-                                    <div class="bg-white shadow-lg rounded-xl">
-                                        <img src="/images/nagod.png" alt="" class="w-32 rounded-xl p-4 m-auto">
-                                        <h4 class="bg-[#f6921e] py-2 px-4 rounded-xl text-xl text-white">নগদ</h4>
-                                    </div>
+                                <div class="bg-white shadow-lg rounded-xl">
+                                    <img src="/images/nagod.png" alt="" class="w-32 rounded-xl p-4 m-auto">
+                                    <h4 class="bg-[#f6921e] py-2 px-4 rounded-xl text-xl text-white">নগদ</h4>
+                                </div>
 
                                 <h4 class="text-xl text-white mt-4">যে নম্বরে টাকা পাঠাবেন : (Send Money)</h4>
 
@@ -178,8 +176,7 @@
                                     <div class="mb-5">
                                         <label class="text-sm">নগদ এর কোন নম্বর থেকে টাকা পাঠিয়েছেন? <span
                                                 class="text-red-600 text-lg">*</span></label>
-                                        <input type="text"
-                                            placeholder="নগদ এর যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি দিন"
+                                        <input type="text" placeholder="নগদ এর যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি দিন"
                                             class="w-full rounded-lg mt-2 text-sm py-3 px-5">
                                     </div>
 
@@ -220,10 +217,10 @@
                                     নাম্বারটি কপি করে আপনার বিকাশ এপ্স থেকে পাশে উল্লেখিত ফি সেন্ড মানি করুন। আপনার
                                     পেমেন্ট এর পরিমান: ৳100</h3>
 
-                                    <div class="bg-white shadow-lg rounded-xl">
-                                        <img src="/images/rocket.png" alt="" class="w-32 rounded-xl p-4 m-auto">
-                                        <h4 class="bg-[#8c3492] py-2 px-4 rounded-xl text-xl text-white">রকেট</h4>
-                                    </div>
+                                <div class="bg-white shadow-lg rounded-xl">
+                                    <img src="/images/rocket.png" alt="" class="w-32 rounded-xl p-4 m-auto">
+                                    <h4 class="bg-[#8c3492] py-2 px-4 rounded-xl text-xl text-white">রকেট</h4>
+                                </div>
 
                                 <h4 class="text-xl text-white mt-4">যে নম্বরে টাকা পাঠাবেন : (Send Money)</h4>
 
