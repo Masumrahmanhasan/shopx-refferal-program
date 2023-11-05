@@ -11,6 +11,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::query()->with('avatar')->paginate(10);
-        return view('admin.user.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 }

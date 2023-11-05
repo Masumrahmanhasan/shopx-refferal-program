@@ -10,5 +10,20 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        laravel({
+            input: [
+                'resources/admin/sass/style.scss',
+                'resources/admin/js/main.js',
+                'resources/admin/js/components/utils.js',
+            ],
+            refresh: true,
+        })
     ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@import "bootstrap/scss/functions";`,
+            },
+        },
+    },
 });

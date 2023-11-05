@@ -1,113 +1,159 @@
 @extends('layouts.admin')
-@section('title', 'Dashboard')
+
+@section('title','Dashboard')
 
 @section('content')
-    <div class="page-wrapper">
-        <!-- Page header -->
-        <div class="page-header d-print-none">
-            <div class="container-xl">
-                <div class="row g-2 align-items-center">
-                    <div class="col">
-                        <!-- Page pre-title -->
-                        <div class="page-pretitle">
-                            Overview
-                        </div>
-                        <h2 class="page-title">
-                            Dashboard
-                        </h2>
-                    </div>
+    <div class="row g-5 g-xl-10">
+        <div class="col-xl-4 mb-xl-10">
 
+            <!--begin::Lists Widget 19-->
+            <div class="card card-flush h-xl-100">
+                <!--begin::Heading-->
+                <div
+                    class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start h-250px"
+                    style="background-image:url('{{ asset('media/svg/shapes/top-green.png') }}')"
+                    data-bs-theme="light">
+                    <!--begin::Title-->
+                    <h3 class="card-title align-items-start flex-column text-white pt-15">
+                        <span class="fw-bold fs-2x mb-3">Users</span>
+                    </h3>
+                    <!--end::Title-->
+
+                    <!--end::Toolbar-->
                 </div>
-            </div>
-        </div>
-        <!-- Page body -->
-        <div class="page-body">
-            <div class="container-xl">
-                <div class="row row-deck row-cards">
-                    <div class="col-12">
-                        <div class="row row-cards">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card card-sm">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <span class="bg-primary text-white avatar">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
-                                                       width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                       fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                       <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                                                       <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                                       <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                                                  </svg>
-                                                </span>
-                                            </div>
-                                            <div class="col">
-                                                <div class="font-weight-medium">
-                                                    <strong>{{ $data->total }}</strong> Total Users
-                                                </div>
-                                            </div>
-                                        </div>
+                <!--end::Heading-->
+
+                <!--begin::Body-->
+                <div class="card-body mt-n20">
+                    <!--begin::Stats-->
+                    <div class="mt-n20 position-relative">
+                        <!--begin::Row-->
+                        <div class="row g-3 g-lg-6">
+                            <!--begin::Col-->
+                            <div class="col-6">
+                                <!--begin::Items-->
+                                <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-30px me-5 mb-8">
+                                <span class="symbol-label">
+                                    <i class="ki-duotone ki-flask fs-1 text-primary">
+                                        <span class="path1"></span><span class="path2"></span>
+                                    </i>
+                                </span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card card-sm">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                            <span class="bg-green text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
-                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
-                                                   width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                   fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                       <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                                                       <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                                       <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                                                  </svg>
-                                            </span>
-                                            </div>
-                                            <div class="col">
-                                                <div class="font-weight-medium">
-                                                    <strong>{{ $data->active }}</strong> Active Users
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <!--end::Symbol-->
+
+                                    <!--begin::Stats-->
+                                    <div class="m-0">
+                                        <!--begin::Number-->
+                                        <span
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ $data['total'] }}</span>
+                                        <!--end::Number-->
+
+                                        <!--begin::Desc-->
+                                        <span class="text-gray-500 fw-semibold fs-6">Total</span>
+                                        <!--end::Desc-->
                                     </div>
+                                    <!--end::Stats-->
                                 </div>
+                                <!--end::Items-->
                             </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card card-sm">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                            <span class="bg-danger text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
-                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
-                                                   width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                   fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                       <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                                                       <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                                       <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                                                  </svg>
-                                            </span>
-                                            </div>
-                                            <div class="col">
-                                                <div class="font-weight-medium">
-                                                    <strong>{{ $data->inactive }}</strong> Inactive Users
-                                                </div>
-                                            </div>
-                                        </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-6">
+                                <!--begin::Items-->
+                                <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-30px me-5 mb-8">
+                                <span class="symbol-label">
+                                    <i class="ki-duotone ki-bank fs-1 text-primary"><span class="path1"></span><span
+                                            class="path2"></span></i>
+                                </span>
                                     </div>
+                                    <!--end::Symbol-->
+
+                                    <!--begin::Stats-->
+                                    <div class="m-0">
+                                        <!--begin::Number-->
+                                        <span
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ $data['active'] }}</span>
+                                        <!--end::Number-->
+
+                                        <!--begin::Desc-->
+                                        <span class="text-gray-500 fw-semibold fs-6">Active</span>
+                                        <!--end::Desc-->
+                                    </div>
+                                    <!--end::Stats-->
                                 </div>
+                                <!--end::Items-->
                             </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-6">
+                                <!--begin::Items-->
+                                <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-30px me-5 mb-8">
+                                <span class="symbol-label">
+                                    <i class="ki-duotone ki-award fs-1 text-primary"><span class="path1"></span><span
+                                            class="path2"></span><span class="path3"></span></i>
+                                </span>
+                                    </div>
+                                    <!--end::Symbol-->
+
+                                    <!--begin::Stats-->
+                                    <div class="m-0">
+                                        <!--begin::Number-->
+                                        <span
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ $data['inactive'] }}</span>
+                                        <!--end::Number-->
+
+                                        <!--begin::Desc-->
+                                        <span class="text-gray-500 fw-semibold fs-6">Inactive</span>
+                                        <!--end::Desc-->
+                                    </div>
+                                    <!--end::Stats-->
+                                </div>
+                                <!--end::Items-->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-6">
+                                <!--begin::Items-->
+                                <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-30px me-5 mb-8">
+                                <span class="symbol-label">
+                                    <i class="ki-duotone ki-timer fs-1 text-primary"><span class="path1"></span><span
+                                            class="path2"></span><span class="path3"></span></i>
+                                </span>
+                                    </div>
+                                    <!--end::Symbol-->
+
+                                    <!--begin::Stats-->
+                                    <div class="m-0">
+                                        <!--begin::Number-->
+                                        <span class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">822</span>
+                                        <!--end::Number-->
+
+                                        <!--begin::Desc-->
+                                        <span class="text-gray-500 fw-semibold fs-6">Hours Learned</span>
+                                        <!--end::Desc-->
+                                    </div>
+                                    <!--end::Stats-->
+                                </div>
+                                <!--end::Items-->
+                            </div>
+                            <!--end::Col-->
+
                         </div>
+                        <!--end::Row-->
                     </div>
+                    <!--end::Stats-->
                 </div>
+                <!--end::Body-->
             </div>
+            <!--end::Lists Widget 19-->
         </div>
     </div>
 @endsection
