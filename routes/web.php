@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/referrel', [ReferrelController::class, 'index'])->name('referrel.index');
     Route::get('/task', [TaskController::class, 'index'])->name('task');
 
+    Route::post('/verify-payment', [PaymentController::class, 'store'])->name('verify.payment');
+
 });
 
 require __DIR__.'/auth.php';

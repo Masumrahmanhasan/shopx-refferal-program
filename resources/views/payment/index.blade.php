@@ -18,7 +18,7 @@
 
         <div class="">
 
-            <div x-data="{ tab: 1 }" x-cloak class=" mt-5 antialiased">
+            <div x-data="{ tab: 0 }" x-cloak class=" mt-5 antialiased">
                 <div class="relative flex flex-col rounded-lg shadow-xs">
 
                     {{-- lg: flex  --}}
@@ -26,7 +26,7 @@
                         {{-- bkash --}}
                         <button type="button"
                             class="sm:w-full lg: w-1/4 focus:outline-none text-gray-400 hover:text-gray-500 py-2 px-1 border-t-2 text-sm tracking-wide font-medium border-transparent rounded-xl mb-6"
-                            x-on:click="tab = 1"
+                            @click="tab = 1"
                             :class="{ 'text-gray-700 border-solid border-2 border-orange-500': tab === 1 }">
 
                             <div class="bg-white shadow-lg rounded-xl">
@@ -39,7 +39,7 @@
                         {{-- Nagod --}}
                         <button type="button"
                             class="sm:w-full lg: w-1/4 focus:outline-none text-gray-400 hover:text-gray-500 py-2 px-1 border-t-2 text-sm tracking-wide font-medium border-transparent rounded-xl mb-6"
-                            x-on:click="tab = 2" :class="{ 'text-gray-700 border-2 border-orange-500': tab === 2 }">
+                            @click="tab = 2" :class="{ 'text-gray-700 border-2 border-orange-500': tab === 2 }">
 
                             <div class="bg-white shadow-lg rounded-xl">
                                 <img src="/images/nagod.png" alt="" class="w-32 rounded-xl p-4 m-auto">
@@ -67,12 +67,12 @@
                         <div x-show="tab === 1">
 
                             {{-- item --}}
-                            <div class="bg-[#FF5C00] mt-5 mb-5 p-7 rounded-xl text-center sm:px-4 py-5">
+                            <div class="bg-[#60a5fa] mt-5 mb-5 p-7 rounded-xl text-center sm:px-4 py-5">
 
                                 <h3 class="text-xl text-white border-b border-solid border-white pb-5 mb-5 sm:text-lg">
                                     নিচের বিকাশ
                                     নাম্বারটি কপি করে আপনার বিকাশ এপ্স থেকে পাশে উল্লেখিত ফি সেন্ড মানি করুন। আপনার
-                                    পেমেন্ট এর পরিমান: ৳100</h3>
+                                    পেমেন্ট এর পরিমান: ৳200</h3>
 
                                 <div class="bg-white shadow-lg rounded-xl">
                                     <img src="/images/bkash.png" alt="" class="w-32 rounded-xl p-4 m-auto">
@@ -99,37 +99,40 @@
 
                             {{-- item --}}
                             <div class="p-6  bg-white rounded-xl shadow-lg border border-solid border-[#2196f3]">
+                                <form action="{{ route('verify.payment') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="gateway" value="bkash">
+                                    <div class="w-3/4 m-auto sm:w-full">
+                                        <div class="mb-5">
+                                            <label class="text-sm">বিকাশ এর কোন নম্বর থেকে টাকা পাঠিয়েছেন? <span
+                                                    class="text-red-600 text-lg">*</span></label>
+                                            <input type="text"
+                                                   name="account"
+                                                placeholder="বিকাশ এর যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি দিন"
+                                                class="w-full rounded-lg mt-2 text-sm py-3 px-5">
+                                        </div>
 
-                                <div class="w-3/4 m-auto sm:w-full">
-                                    <div class="mb-5">
-                                        <label class="text-sm">বিকাশ এর কোন নম্বর থেকে টাকা পাঠিয়েছেন? <span
-                                                class="text-red-600 text-lg">*</span></label>
-                                        <input type="text"
-                                            placeholder="বিকাশ এর যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি দিন"
-                                            class="w-full rounded-lg mt-2 text-sm py-3 px-5">
+                                        <div class="">
+                                            <label class="text-sm">বিকাশ -পেমেন্ট এর ট্রান্সাকশন নম্বরটি কত? <span
+                                                    class="text-red-600 text-lg">*</span> </label>
+                                            <input type="text" name="trxn_id" placeholder="পেমেন্ট এর ট্রান্সাকশন নম্বরটি প্রদান করুন"
+                                                class="w-full rounded-lg mt-2 text-sm py-3 px-5">
+                                        </div>
+
+                                        <p class="mt-5 text-center text-lg text-[#2196f3] sm:text-base">
+                                            পেমেন্ট এর তথ্য সঠিক কিনা তা ভেরিভাই করতে নিচের <span
+                                                class="text-[#ffa000] text-xl font-bold sm:text-lg">Verify Payment</span>
+                                            বাটনে ক্লিক
+                                            করুন।
+                                        </p>
+
+                                        <div class="text-center">
+                                            <button type="submit"
+                                                class="mt-5 m-auto bg-[#FF5C00] py-2 px-5 rounded-md text-white">Verify
+                                                Payment</button>
+                                        </div>
                                     </div>
-
-                                    <div class="">
-                                        <label class="text-sm">বিকাশ -পেমেন্ট এর ট্রান্সাকশন নম্বরটি কত? <span
-                                                class="text-red-600 text-lg">*</span> </label>
-                                        <input type="text" placeholder="পেমেন্ট এর ট্রান্সাকশন নম্বরটি প্রদান করুন"
-                                            class="w-full rounded-lg mt-2 text-sm py-3 px-5">
-                                    </div>
-
-                                    <p class="mt-5 text-center text-lg text-[#2196f3] sm:text-base">
-                                        পেমেন্ট এর তথ্য সঠিক কিনা তা ভেরিভাই করতে নিচের <span
-                                            class="text-[#ffa000] text-xl font-bold sm:text-lg">Verify Payment</span>
-                                        বাটনে ক্লিক
-                                        করুন।
-                                    </p>
-
-                                    <div class="text-center">
-                                        <button type="submit"
-                                            class="mt-5 m-auto bg-[#FF5C00] py-2 px-5 rounded-md text-white">Verify
-                                            Payment</button>
-                                    </div>
-
-                                </div>
+                                </form>
 
                             </div>
 
@@ -172,6 +175,7 @@
                             {{-- item --}}
                             <div class="p-6  bg-white rounded-xl shadow-lg border border-solid border-[#2196f3]">
 
+                                <form action="" method="POST">
                                 <div class="w-3/4 m-auto sm:w-full">
                                     <div class="mb-5">
                                         <label class="text-sm">নগদ এর কোন নম্বর থেকে টাকা পাঠিয়েছেন? <span
@@ -196,11 +200,12 @@
 
                                     <div class="text-center">
                                         <button type="submit"
-                                            class="mt-5 m-auto bg-[#FF5C00] py-2 px-5 rounded-md text-white">Verify
+                                            class="mt-5 m-auto bg-pink-700 py-2 px-5 rounded-md text-white">Verify
                                             Payment</button>
                                     </div>
 
                                 </div>
+                                </form>
 
                             </div>
 
@@ -210,6 +215,7 @@
                         <div x-show="tab === 3">
 
                             {{-- item --}}
+
                             <div class="bg-[#FF5C00] mt-5 mb-5 p-7 rounded-xl text-center sm:px-4 py-5">
 
                                 <h3 class="text-xl text-white border-b border-solid border-white pb-5 mb-5 sm:text-lg">
@@ -243,36 +249,38 @@
                             {{-- item --}}
                             <div class="p-6  bg-white rounded-xl shadow-lg border border-solid border-[#2196f3]">
 
-                                <div class="w-3/4 m-auto sm:w-full">
-                                    <div class="mb-5">
-                                        <label class="text-sm">রকেট এর কোন নম্বর থেকে টাকা পাঠিয়েছেন? <span
-                                                class="text-red-600 text-lg">*</span></label>
-                                        <input type="text"
-                                            placeholder="রকেট এর যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি দিন"
-                                            class="w-full rounded-lg mt-2 text-sm py-3 px-5">
+                                <form action="" method="POST">
+                                    <div class="w-3/4 m-auto sm:w-full">
+                                        <div class="mb-5">
+                                            <label class="text-sm">রকেট এর কোন নম্বর থেকে টাকা পাঠিয়েছেন? <span
+                                                    class="text-red-600 text-lg">*</span></label>
+                                            <input type="text"
+                                                placeholder="রকেট এর যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি দিন"
+                                                class="w-full rounded-lg mt-2 text-sm py-3 px-5">
+                                        </div>
+
+                                        <div class="">
+                                            <label class="text-sm">রকেট -পেমেন্ট এর ট্রান্সাকশন নম্বরটি কত? <span
+                                                    class="text-red-600 text-lg">*</span> </label>
+                                            <input type="text" placeholder="পেমেন্ট এর ট্রান্সাকশন নম্বরটি প্রদান করুন"
+                                                class="w-full rounded-lg mt-2 text-sm py-3 px-5">
+                                        </div>
+
+                                        <p class="mt-5 text-center text-lg text-[#2196f3] sm:text-base">
+                                            পেমেন্ট এর তথ্য সঠিক কিনা তা ভেরিভাই করতে নিচের <span
+                                                class="text-[#ffa000] text-xl font-bold sm:text-lg">Verify Payment</span>
+                                            বাটনে ক্লিক
+                                            করুন।
+                                        </p>
+
+                                        <div class="text-center">
+                                            <button type="submit"
+                                                class="mt-5 m-auto bg-pink-700 py-2 px-5 rounded-md text-white">Verify
+                                                Payment</button>
+                                        </div>
+
                                     </div>
-
-                                    <div class="">
-                                        <label class="text-sm">রকেট -পেমেন্ট এর ট্রান্সাকশন নম্বরটি কত? <span
-                                                class="text-red-600 text-lg">*</span> </label>
-                                        <input type="text" placeholder="পেমেন্ট এর ট্রান্সাকশন নম্বরটি প্রদান করুন"
-                                            class="w-full rounded-lg mt-2 text-sm py-3 px-5">
-                                    </div>
-
-                                    <p class="mt-5 text-center text-lg text-[#2196f3] sm:text-base">
-                                        পেমেন্ট এর তথ্য সঠিক কিনা তা ভেরিভাই করতে নিচের <span
-                                            class="text-[#ffa000] text-xl font-bold sm:text-lg">Verify Payment</span>
-                                        বাটনে ক্লিক
-                                        করুন।
-                                    </p>
-
-                                    <div class="text-center">
-                                        <button type="submit"
-                                            class="mt-5 m-auto bg-[#FF5C00] py-2 px-5 rounded-md text-white">Verify
-                                            Payment</button>
-                                    </div>
-
-                                </div>
+                                </form>
 
                             </div>
 
@@ -284,10 +292,6 @@
 
         </div>
 
-
     </div>
-
-
-
 
 </x-app-layout>

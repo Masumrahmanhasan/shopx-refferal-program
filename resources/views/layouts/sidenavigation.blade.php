@@ -159,7 +159,7 @@
                 </li>
 
                 <li
-                    class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if (Route::currentRouteName() === 'payment.index') bg-purple_light-50 text-white active @endif">
+                    class="hover:bg-purple_light-50 hidden rounded-3xl hover:text-white user-menu @if (Route::currentRouteName() === 'payment.index') bg-purple_light-50 text-white active @endif">
                     <a href="{{ route('payment.index') }}"
                         class="flex items-center mb-2 font-bolder px-3 py-2 active" aria-expanded="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"

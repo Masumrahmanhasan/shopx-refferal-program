@@ -73,10 +73,11 @@
                                 </div>
                             </div>
                             <!-- Different Button for User Activation -->
-                            <button
+                            <a
+                                href="{{ route('payment.index') }}"
                                 class="px-4 py-2 font-semibold bg-pink-600 hover:bg-pink-700 rounded-md text-white transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-pink-300">
                                 Activate Account
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="flex items-start mt-4 gap-5">

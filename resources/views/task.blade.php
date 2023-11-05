@@ -7,153 +7,41 @@
     </x-slot>
 
     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        @foreach($tasks as $task)
+            <div class="border-2 border-solid border-[#CACACA] rounded-2xl bg-white shadow-md">
 
-        {{-- item --}}
-        <div class="border-2 border-solid border-[#CACACA] rounded-2xl bg-white shadow-md">
+                <div class="relative">
+                    <img src="{{ $task->thumbnail }}" alt="" class="rounded-t-xl">
+                    <span class="absolute bottom-4 right-3 bg-[#F2BA11] py-1 px-3 rounded-full">৳ {{ $task->price }}</span>
+                </div>
 
-            <div class="relative">
-                <img src="/images/task-img.png" alt="" class="rounded-t-xl">
-                <span class="absolute bottom-4 right-3 bg-[#F2BA11] py-1 px-3 rounded-full">৳ ৪,০০০</span>
-            </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold">{{ $task->title }}</h3>
+                    <p class="mt-2 text-sm text-[#444]">{{ $task->description }}</p>
 
-            <div class="p-5">
-                <h3 class="text-lg font-bold">Advance Graphic Design</h3>
-                <p class="mt-2 text-sm text-[#444]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    convallis tincidunt metus, sit amet
-                    malesuada sapien bibendum vel.</p>
-                <a href=""
-                    class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg">বিস্তারিত দেখুন</a>
-            </div>
-
-        </div>
-
-        {{-- item --}}
-        <div class="border-2 border-solid border-[#CACACA] rounded-2xl bg-white shadow-md">
-
-            <div class="relative">
-                <img src="/images/task-img.png" alt="" class="rounded-t-xl">
-                <span class="absolute bottom-4 right-3 bg-[#F2BA11] py-1 px-3 rounded-full">৳ ৪,০০০</span>
-            </div>
-
-            <div class="p-5">
-                <h3 class="text-lg font-bold">Advance Graphic Design</h3>
-                <p class="mt-2 text-sm text-[#444]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    convallis tincidunt metus, sit amet
-                    malesuada sapien bibendum vel.</p>
-                <a href=""
-                    class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg">বিস্তারিত দেখুন</a>
-            </div>
-
-        </div>
-
-        {{-- item --}}
-        <div class="border-2 border-solid border-[#CACACA] rounded-2xl bg-white shadow-md">
-
-            <div class="relative">
-                <img src="/images/task-img.png" alt="" class="rounded-t-xl">
-                <span class="absolute bottom-4 right-3 bg-[#F2BA11] py-1 px-3 rounded-full">৳ ৪,০০০</span>
-            </div>
-
-            <div class="p-5">
-                <h3 class="text-lg font-bold">Advance Graphic Design</h3>
-                <p class="mt-2 text-sm text-[#444]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    convallis tincidunt metus, sit amet
-                    malesuada sapien bibendum vel.</p>
-                <a href=""
-                    class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg">বিস্তারিত দেখুন</a>
-            </div>
-
-        </div>
-
-        {{-- item --}}
-        <div class="border-2 border-solid border-[#CACACA] rounded-2xl bg-white shadow-md">
-
-            <div class="relative">
-                <img src="/images/task-img.png" alt="" class="rounded-t-xl">
-                <span class="absolute bottom-4 right-3 bg-[#F2BA11] py-1 px-3 rounded-full">৳ ৪,০০০</span>
-            </div>
-
-            <div class="p-5">
-                <h3 class="text-lg font-bold">Advance Graphic Design</h3>
-                <p class="mt-2 text-sm text-[#444]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    convallis tincidunt metus, sit amet
-                    malesuada sapien bibendum vel.</p>
-                <a href=""
-                    class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg">বিস্তারিত দেখুন</a>
-            </div>
-
-        </div>
-
-        {{-- item --}}
-        <div class="border-2 border-solid border-[#CACACA] rounded-2xl bg-white shadow-md">
-
-            <div class="relative">
-                <img src="/images/task-img.png" alt="" class="rounded-t-xl">
-                <span class="absolute bottom-4 right-3 bg-[#F2BA11] py-1 px-3 rounded-full">৳ ৪,০০০</span>
-            </div>
-
-            <div class="p-5">
-                <h3 class="text-lg font-bold">Advance Graphic Design</h3>
-                <p class="mt-2 text-sm text-[#444]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    convallis tincidunt metus, sit amet
-                    malesuada sapien bibendum vel.</p>
-                <a href=""
-                    class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg">বিস্তারিত দেখুন</a>
-            </div>
-
-        </div>
-
-        {{-- item --}}
-        <div class="border-2 border-solid border-[#CACACA] rounded-2xl bg-white shadow-md">
-
-            <div class="relative">
-                <img src="/images/task-img.png" alt="" class="rounded-t-xl">
-                <span class="absolute bottom-4 right-3 bg-[#F2BA11] py-1 px-3 rounded-full">৳ ৪,০০০</span>
-            </div>
-
-            <div class="p-5">
-                <h3 class="text-lg font-bold">Advance Graphic Design</h3>
-                <p class="mt-2 text-sm text-[#444]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    convallis tincidunt metus, sit amet
-                    malesuada sapien bibendum vel.</p>
-                <a href=""
-                    class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg">বিস্তারিত দেখুন</a>
-            </div>
-
-        </div>
-
-    </div>
-
-    {{-- <div class="bg-gray-100 lg:pl-4 w-full">
-
-        <!-- Task Card -->
-
-        @for ($i = 0; $i < 3; $i++)
-            <div class="relative bg-gradient-to-br from-blue-300 to-indigo-500 p-4 mb-4 rounded-lg shadow-lg flex items-center">
-                <!-- Task Image on Left -->
-                <img src="https://via.placeholder.com/400x300" alt="Task Image" class="w-1/3 h-64 object-cover object-center rounded-lg shadow-lg">
-
-                <!-- Task Details -->
-                <div class="p-6 flex-1 text-white">
-                    <h3 class="text-2xl font-semibold">Unique Task Design</h3>
-                    <p class="text-lg mt-2">Task Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis tincidunt metus, sit amet malesuada sapien bibendum vel.</p>
-
-                    <!-- Price Tag in Top Right Corner -->
-                    <span class="absolute top-2 right-2 bg-pink-600 hover:bg-pink-700 text-white px-3 py-1 rounded-full font-semibold">$30.00</span>
-
-                    <!-- Reddish Gradient Button on the Right -->
-                    <div class="flex items-center mt-6">
-                        <a href="#" class="bg-gradient-to-r from-purple_light-50 to-purple_light-400 text-white px-4 py-2 rounded-full font-semibold hover:shadow-md transition duration-300 ease-in-out">
-                            Take Task
-                        </a>
-                    </div>
+                    <a href="@if(Auth::user()->status !== 'active') {{$task->link}} @else {{ route('payment.index') }} @endif"
+                       class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg"
+                    target="__blank">Take Task</a>
                 </div>
             </div>
+        @endforeach
+            <div class="grid min-h-[140px] w-full place-items-end overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+                <nav>
+                    <ul class="flex">
+                        <li>
+                            <a class="mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-blue-500 p-0 text-sm text-white shadow-md transition duration-150 ease-in-out" href="#">1</a>
+                        </li>
+                        <li>
+                            <a class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300" href="#">2</a>
+                        </li>
+                        <li>
+                            <a class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300" href="#">3</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+    </div>
 
-        @endfor
-
-
-    </div> --}}
 
 
 </x-app-layout>
