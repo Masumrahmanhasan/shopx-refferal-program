@@ -4,6 +4,7 @@ import axios from 'axios';
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+// import '../plugins/plugin.js'
 import './components/util.js'
 import './components/menu.js'
 import './components/blockui.js'

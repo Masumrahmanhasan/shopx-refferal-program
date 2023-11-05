@@ -35,7 +35,7 @@ export default {
             'sm': '320px',
             // => @media (min-width: 320px) { ... }
 
-            'md': '768px',
+            'md': '640px',
             // => @media (min-width: 768px) { ... }
 
             'lg': '1024px',
