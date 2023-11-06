@@ -1,7 +1,8 @@
-"use strict";
+
 
 import KTUtil from './util.js';
 import KTEventHandler from './event-handler.js'
+import { createPopper } from '@popperjs/core';
 // Class definition
 var KTMenu = function(element, options) {
     ////////////////////////////
@@ -553,7 +554,7 @@ var KTMenu = function(element, options) {
             reference = item;
         }
 
-        var popper = Popper.createPopper(reference, sub, _getDropdownPopperConfig(item));
+        var popper = createPopper(reference, sub, _getDropdownPopperConfig(item));
         KTUtil.data(item).set('popper', popper);
     }
 

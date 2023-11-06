@@ -23,9 +23,6 @@
                     Stay updated with the latest news and discussions in our Telegram group.
                 </p>
 
-                <h4 class="text-gray-700 text-center mt-4">
-                    আসসালামুয়ালাইকুম/আদাব, ...
-                </h4>
 
                 <!-- Join Button -->
                 <a href="https://t.me/your_telegram_group"
@@ -54,9 +51,7 @@
                     Stay updated with the latest news and discussions in our Telegram group.
                 </p>
 
-                <h4 class="text-gray-700 text-center mt-4">
-                    আসসালামুয়ালাইকুম/আদাব, ...
-                </h4>
+
 
                 <!-- Join Button -->
                 <a href="https://t.me/your_telegram_group"
@@ -84,9 +79,6 @@
                     Stay updated with the latest news and discussions in our Telegram group.
                 </p>
 
-                <h4 class="text-gray-700 text-center mt-4">
-                    আসসালামুয়ালাইকুম/আদাব, ...
-                </h4>
 
                 <!-- Join Button -->
                 <a href="https://t.me/your_telegram_group"
@@ -113,10 +105,6 @@
                 <p class="text-gray-600 text-center mt-4">
                     Stay updated with the latest news and discussions in our Telegram group.
                 </p>
-
-                <h4 class="text-gray-700 text-center mt-4">
-                    আসসালামুয়ালাইকুম/আদাব, ...
-                </h4>
 
                 <!-- Join Button -->
                 <a href="https://t.me/your_telegram_group"

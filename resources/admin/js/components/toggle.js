@@ -226,3 +226,4 @@ if (document.readyState === 'loading') {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = KTToggle;
 }
+export default KTToggle;

@@ -1,8 +1,10 @@
 @extends('layouts.admin')
 
 @section('title','Dashboard')
+@section('toolbar-title','Dashboard')
 
 @section('content')
+
     <div class="row g-5 g-xl-10">
         <div class="col-xl-4 mb-xl-10">
 
@@ -19,7 +21,6 @@
                     </h3>
                     <!--end::Title-->
 
-                    <!--end::Toolbar-->
                 </div>
                 <!--end::Heading-->
 

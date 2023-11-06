@@ -19,6 +19,7 @@
     "dependencies": {
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.0.1",
+        "formvalidation": "^0.6.2-dev",
         "jquery": "^3.7.1",
         "smooth-scroll": "^16.1.3"
     }

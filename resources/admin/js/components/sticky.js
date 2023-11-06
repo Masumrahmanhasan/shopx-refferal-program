@@ -1,5 +1,6 @@
 "use strict";
 
+import KTUtil from './util.js'
 // Class definition
 var KTSticky = function(element, options) {
     ////////////////////////////
@@ -138,7 +139,7 @@ var KTSticky = function(element, options) {
             } else {
                 the.element.removeAttribute('data-kt-sticky-released');
             }
-        }        
+        }
     }
 
     var _enable = function(update) {
@@ -150,7 +151,7 @@ var KTSticky = function(element, options) {
         var dependencies = _getOption('dependencies');
         var classes = _getOption('class');
         var height = _calculateHeight();
-        
+
         if ( update !== true && _getOption('animation') === true ) {
             KTUtil.css(the.element, 'animationDuration', _getOption('animationSpeed'));
             KTUtil.animateClass(the.element, 'animation ' + _getOption('animationClass'));
@@ -194,12 +195,12 @@ var KTSticky = function(element, options) {
 
         if ( right !== null ) {
             KTUtil.css(the.element, 'right', right);
-        }        
+        }
 
         // Height dependencies
         if ( dependencies !== null ) {
             var dependencyElements = document.querySelectorAll(dependencies);
-            
+
             if ( dependencyElements && dependencyElements.length > 0 ) {
                 for ( var i = 0, len = dependencyElements.length; i < len; i++ ) {
                     KTUtil.css(dependencyElements[i], 'padding-top', String(height) + 'px');
@@ -240,7 +241,7 @@ var KTSticky = function(element, options) {
 
         height = height + parseFloat(KTUtil.css(the.element, 'margin-top'));
         height = height + parseFloat(KTUtil.css(the.element, 'margin-bottom'));
-        
+
         if (KTUtil.css(element, 'border-top')) {
             height = height + parseFloat(KTUtil.css(the.element, 'border-top'));
         }

@@ -2,6 +2,9 @@
 
 import KTUtil from '../components/util.js'
 import SmoothScroll from 'smooth-scroll'
+import { Popover, Tooltip } from 'bootstrap'
+import * as bootstrap from 'bootstrap'
+
 
 // Class definition
 var KTApp = function () {
@@ -34,7 +37,7 @@ var KTApp = function () {
         }
 
         // Initialize popover
-        var tp = new bootstrap.Tooltip(el, options);
+        var tp = new Tooltip(el, options);
 
         // Handle dismiss
         if (options['dismiss'] && options['dismiss'] === 'click') {
@@ -81,7 +84,7 @@ var KTApp = function () {
         }
 
         // Initialize popover
-        var popover = new bootstrap.Popover(el, options);
+        var popover = new Popover(el, options);
 
         // Handle dismiss click
         if (options['dismiss'] === true) {
@@ -649,7 +652,6 @@ var KTApp = function () {
 // Initialize app on document ready
 KTUtil.onDOMContentLoaded(function () {
     KTApp.init();
-    bootstrap.init();
 });
 
 // Initialize page loader on window load

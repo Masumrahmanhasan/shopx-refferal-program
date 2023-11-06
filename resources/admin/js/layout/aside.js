@@ -1,6 +1,7 @@
 "use strict";
 
 import KTUtil from '../components/util.js'
+import KTToggle from '../components/toggle.js'
 // Class definition
 var KTLayoutAside = function () {
     // Private variables

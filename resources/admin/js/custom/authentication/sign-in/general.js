@@ -1,6 +1,9 @@
 "use strict";
 
 import KTUtil from '../../../components/util.js'
+import FormValidation from '../../../../plugins/formvalidation/dist/js/formvalidation.js';
+
+
 
 // Class definition
 var KTSigninGeneral = function() {
@@ -111,7 +114,6 @@ var KTSigninGeneral = function() {
             form = document.querySelector('#kt_sign_in_form');
             submitButton = document.querySelector('#kt_sign_in_submit');
 
-            console.log('hello')
             handleForm();
         }
     };
