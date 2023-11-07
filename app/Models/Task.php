@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property string $status
+ * @property double $price
+ * @property string $link
+ */
 class Task extends Model
 {
     use HasFactory;
@@ -17,7 +25,7 @@ class Task extends Model
         return $this->morphOne(Media::class, 'parent');
     }
 
-    public function getCreatedAtAttribute($value)
+    public function getCreatedAtAttribute(string $value): string
     {
         return Carbon::parse($value)->isoFormat('MMMM Do YYYY');
     }

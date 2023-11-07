@@ -1,8 +1,10 @@
 @extends('layouts.admin')
 
 @section('title','Task')
+@section('toolbar-title','Task')
 
 @section('content')
+
     <div class="card">
         <!--begin::Card header-->
         <div class="card-header border-0 pt-6">

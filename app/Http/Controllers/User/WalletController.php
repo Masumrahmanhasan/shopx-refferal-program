@@ -10,7 +10,15 @@ class WalletController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::query()->where('user_id', auth()->id())->orderByDesc('id')->get();
+        $transactions = Transaction::query()
+            ->where('user_id', auth()->id())
+            ->orderByDesc('id')
+            ->get();
         return view('wallet', compact('transactions'));
+    }
+
+    public function withdraw()
+    {
+
     }
 }

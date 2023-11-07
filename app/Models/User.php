@@ -5,7 +5,9 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,6 +17,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @package App\Models
  * @property string $first_name
  * @property string $last_name
+ * @property string $referral_link
+ * @property string $referral_id
  * @property Carbon $created_at
  */
 class User extends Authenticatable
@@ -66,30 +70,30 @@ class User extends Authenticatable
         );
     }
 
-    public function getCreatedAtAttribute($value)
+    public function getCreatedAtAttribute(string $value): string
     {
         return Carbon::parse($value)->isoFormat('MMMM Do YYYY');
     }
 
-    public function getReferralLinkAttribute()
+    public function getReferralLinkAttribute(): string
     {
         return $this->referral_link = route('register', ['ref' => $this->referral_id]);
     }
 
     public function getSponsoredByAttribute()
     {
-        return User::query()
+        return self::query()
             ->select('first_name', 'last_name', 'referral_id')
             ->where('referral_id', $this->referred_by)
             ->first();
     }
 
-    public function referrels()
+    public function referrals(): HasMany
     {
         return $this->hasMany(UserReferrel::class);
     }
 
-    public function avatar()
+    public function avatar(): MorphOne
     {
         return $this->morphOne(Media::class, 'parent')->withDefault([
             'name' => 'https://demo.activeitzone.com/ecommerce/public/assets/img/avatar-place.png'

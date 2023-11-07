@@ -14,9 +14,11 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/users/{user}/approve', [\App\Http\Controllers\Admin\UserController::class, 'approve'])->name('users.approve');
 
     Route::get('/tasks', [\App\Http\Controllers\Admin\TaskController::class, 'index'])->name('tasks.index');
-    Route::get('/tasks/create', [\App\Http\Controllers\Admin\TaskController::class, 'index'])->name('tasks.index');
+    Route::get('/tasks/create', [\App\Http\Controllers\Admin\TaskController::class, 'create'])->name('tasks.create');
+    Route::get('/tasks/store', [\App\Http\Controllers\Admin\TaskController::class, 'store'])->name('tasks.store');
 
     Route::get('/faqs', [\App\Http\Controllers\Admin\FaqController::class, 'index'])->name('faqs.index');
+
 
     Route::post('/logout', [\App\Http\Controllers\Admin\LoginController::class, 'destroy'])->name('logout');
 });

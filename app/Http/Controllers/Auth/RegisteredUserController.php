@@ -50,7 +50,7 @@ class RegisteredUserController extends Controller
             'status' => 'active',
         ]);
 
-        $referral->referrels()->create([
+        $referral->referrals()->create([
             'referrel_id' => $user->id
         ]);
 

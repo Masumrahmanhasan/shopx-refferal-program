@@ -57,4 +57,14 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function upload(Request $request): RedirectResponse
+    {
+        if ($request->user()->hasFile('avatar')) {
+            $user = $request->user();
+
+            $user->avatar->replaceWith($request->file('avatar'), 'media/user/avatar');
+        }
+        return redirect()->back()->with('avatar', 'please select avatar');
+    }
 }
