@@ -7,9 +7,9 @@
         <!--begin::Logo-->
         <a href="#">
             <img alt="Logo" src="{{ asset('images/logo.png') }}" class="h-25px logo"/>
-
+            <h4 class="text-white">PROFIT WORK-BD</h4>
         </a>
-        <span class="text-slate-500">PROFIT WORK-BD</span>
+
         <!--end::Logo-->
         <!--begin::Aside toggler-->
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle"

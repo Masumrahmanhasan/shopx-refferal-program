@@ -28,11 +28,11 @@
                 <form class="form w-100" novalidate="novalidate" action="{{ route('admin.login') }}" method="POST">
                     @csrf
                     <!--begin::Heading-->
-                    <div class="text-center mb-10">
+                    <div class="text-centermbd-flex justify-content-center">
                         <!--begin::Title-->
-                        <a href="#" class="mb-12">
+                        <a href="#" class="mb-12 d-flex justify-content-center">
                             <img alt="Logo" src="{{ asset('images/logo.png') }}" class="h-40px" />
-                            <span class="text-lg">PROFIT WORK-BD</span>
+                            <h4>PROFIT WORK-BD</h4>
                         </a>
                         <!--end::Title-->
                     </div>
