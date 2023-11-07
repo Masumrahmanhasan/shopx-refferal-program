@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Media;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,10 +61,12 @@ class ProfileController extends Controller
 
     public function upload(Request $request): RedirectResponse
     {
-        if ($request->user()->hasFile('avatar')) {
-            $user = $request->user();
+        if ($request->hasFile('avatar')) {
+            if ($request->user()->avatar !== null) {
+                $request->user()?->avatar->replaceWith($request->file('avatar'), 'media/user/avatar', 'avatar');
+            }
+            Media::upload($request->user(), $request->file('avatar'), 'media/user/avatar', 'avatar');
 
-            $user->avatar->replaceWith($request->file('avatar'), 'media/user/avatar');
         }
         return redirect()->back()->with('avatar', 'please select avatar');
     }

@@ -95,9 +95,7 @@ class User extends Authenticatable
 
     public function avatar(): MorphOne
     {
-        return $this->morphOne(Media::class, 'parent')->withDefault([
-            'name' => 'https://demo.activeitzone.com/ecommerce/public/assets/img/avatar-place.png'
-        ]);
+        return $this->morphOne(Media::class, 'parent');
     }
 
     public function activation(): HasOne

@@ -1955,7 +1955,7 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
                             <a href="{{ route('admin.logout') }}"
                                onclick="event.preventDefault();

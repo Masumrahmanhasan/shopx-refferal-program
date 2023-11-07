@@ -43,6 +43,7 @@
         <main>
             <div class="py-4">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:pl-3 sm:pr-3">
+                    @if(Auth::user()->status === 'inactive')
                     <div class="w-full p-6 mx-auto rounded-lg shadow-lg bg-gradient-to-r from-blue-400 to-purple-500">
                         <div class="flex items-center justify-between b-2">
                             <div class="flex justify-between items-center">
@@ -80,6 +81,7 @@
                             </a>
                         </div>
                     </div>
+                    @endif
                     <div class="flex items-start mt-4 gap-5">
                         @include('layouts.sidenavigation')
                         {{ $slot }}
@@ -90,6 +92,39 @@
     </div>
 
 
+    <script>
+        function uploadAvatar(input) {
+            const imageElement = document.getElementById('profile-image');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imageElement.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+            if (input.files && input.files[0]) {
+                const form = document.getElementById('avatar');
+                form.submit();
+            }
+            {{--const formData = new FormData();--}}
+            {{--formData.append('avatar', input.files[0]);--}}
+
+            {{--axios.patch('{{ route('profile.upload') }}', formData, {--}}
+            {{--    headers: {--}}
+            {{--        'Content-Type': 'multipart/form-data'--}}
+            {{--    },--}}
+            {{--}).then(response => {--}}
+            {{--    console.log('File uploaded successfully:', response.data);--}}
+            {{--})--}}
+            {{--.catch(error => {--}}
+            {{--    console.error('Error uploading file:', error);--}}
+            {{--});--}}
+        }
+    </script>
 </body>
+
 
 </html>

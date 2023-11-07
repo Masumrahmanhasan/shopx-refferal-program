@@ -17,7 +17,7 @@ class PaymentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $transaction = Transaction::query()->create([
-            'user_id'=> auth()->id,
+            'user_id'=> auth()->id(),
             'account' => $request->input('account'),
             'gateway' => $request->input('gateway'),
             'trxn_id' => $request->input('trxn_id'),

@@ -131,11 +131,14 @@ class Media extends Model
      * @param string $path
      * @return bool
      */
-    public function replaceWith(UploadedFile $image, string $path): bool
+    public function replaceWith(UploadedFile $image, string $path, string $type = null): bool
     {
         Cache::forget($this->parent_type . $this->parent_id);
         $this->disk->delete($this->name);
         $this->name = $this->disk->putFile($path, $image);
+        if ($type !== null) {
+            $this->type = $type;
+        }
         return $this->save();
     }
 }
