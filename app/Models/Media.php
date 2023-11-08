@@ -79,7 +79,7 @@ class Media extends Model
     public function getDiskAttribute(): Filesystem|FilesystemAdapter
     {
         if(! $this->_disk){
-            $this->_disk = Storage::disk(config('filesystems.local'));
+            $this->_disk = Storage::disk(config('filesystems.image'));
         }
         return $this->_disk;
     }
@@ -129,6 +129,7 @@ class Media extends Model
     /**
      * @param UploadedFile $image
      * @param string $path
+     * @param string|null $type
      * @return bool
      */
     public function replaceWith(UploadedFile $image, string $path, string $type = null): bool

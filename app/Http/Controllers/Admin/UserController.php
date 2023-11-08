@@ -13,10 +13,29 @@ class UserController extends Controller
 {
     public function index(): Factory|View|Application
     {
-        $users = User::query()->with('avatar')
-            ->paginate(10);
+        $users = User::query()
+            ->with('avatar')
+            ->where('status', 'active')
+            ->whereNot('role', 'admin')
+            ->get();
 
         return view('admin.users.index', compact('users'));
+    }
+
+    public function unverified(): Factory|View|Application
+    {
+        $users = User::query()
+            ->with('avatar')
+            ->where('status', 'inactive')
+            ->whereNot('role', 'admin')
+            ->get();
+
+        return view('admin.users.inactive', compact('users'));
+    }
+
+    public function show(User $user)
+    {
+
     }
 
     /**
@@ -39,6 +58,12 @@ class UserController extends Controller
             ->update(['status' => 'approved']);
 
         ReferrelPointJob::dispatchSync($user);
+        return redirect()->back();
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
         return redirect()->back();
     }
 }

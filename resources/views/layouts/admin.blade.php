@@ -6,11 +6,13 @@
     <title>@yield('title')</title>
     <meta charset="utf-8"/>
 
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
-    <!--end::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
-    @vite(['resources/admin/sass/style.scss', 'resources/admin/js/main.js'])
+    <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -32,37 +34,7 @@
             <!--end::Header-->
             <!--begin::Content-->
             <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                <!--begin::Toolbar-->
-
-                    <div class="toolbar" id="kt_toolbar">
-                        <!--begin::Container-->
-                        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
-                            <!--begin::Page title-->
-                            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
-                                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
-                                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-                                <!--begin::Title-->
-                                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">@yield('toolbar-title')
-                                    <!--begin::Separator-->
-                                    <span class="h-20px border-1 border-gray-200 border-start ms-3 mx-2 me-1"></span>
-                                    <!--end::Separator-->
-                                </h1>
-                                <!--end::Title-->
-                            </div>
-                        </div>
-                        <!--end::Container-->
-                    </div>
-
-                <!--end::Toolbar-->
-                <!--begin::Post-->
-                <div class="post d-flex flex-column-fluid" id="kt_post">
-                    <!--begin::Container-->
-                    <div id="kt_content_container" class="container-xxl">
-                        @yield('content')
-                    </div>
-                    <!--end::Container-->
-                </div>
-                <!--end::Post-->
+                @yield('content')
             </div>
 
         </div>
@@ -71,5 +43,18 @@
     <!--end::Page-->
 </div>
 <script>var hostUrl = "assets/";</script>
+
+<script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
+<script src="{{ asset('js/scripts.bundle.js') }}"></script>
+
+<script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
+
+@yield('scripts')
+
+<script src="{{ asset('js/widgets.bundle.js') }}"></script>
+<script src="{{ asset('js/custom/widgets.js') }}"></script>
+<script src="{{ asset('js/custom/apps/chat/chat.js') }}"></script>
+
+
 </body>
 </html>

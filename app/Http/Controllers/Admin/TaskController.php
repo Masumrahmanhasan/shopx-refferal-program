@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::query()->with('thumbnail')->paginate();
+        $tasks = Task::query()->with('thumbnail')->get();
         return view('admin.tasks.index', compact('tasks'));
     }
 
