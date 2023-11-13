@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskStoreRequest;
 use App\Models\Media;
 use App\Models\Task;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 
 class TaskController extends Controller
@@ -18,7 +19,7 @@ class TaskController extends Controller
 
     public function create()
     {
-
+        return view('admin.tasks.create');
     }
 
     /**
@@ -37,11 +38,14 @@ class TaskController extends Controller
     /**
      * Delete resource
      * @param Task $task
-     * @return RedirectResponse
+     * @return JsonResponse
      */
-    public function destroy(Task $task): RedirectResponse
+    public function destroy(Task $task): JsonResponse
     {
         $task->delete();
-        return redirect()->back();
+        return response()->json([
+            'success' => true,
+            'message' => 'Task deleted successfully'
+        ]);
     }
 }

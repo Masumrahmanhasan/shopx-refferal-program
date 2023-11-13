@@ -5,91 +5,18 @@
         </h2>
     </x-slot>
 
-    <div class="flex-1 sm:pl-0 md:pl-4 lg:pl-4">
-        <div class="bg-white rounded-lg p-6 shadow-md hidden">
-            <div class="flex items-center">
-                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round"
-                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M20 4a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
-                        <path d="M11 5h2M12 12v2m0 4h-1"></path>
-                    </svg>
-                </div>
-                <div class="ml-4">
-                    <p class="text-lg font-semibold text-gray-800">Account Not Active</p>
-                    <p class="text-sm text-gray-600">Your account is currently not active. Please activate it to access
-                        all features.</p>
-                </div>
-            </div>
-            <div class="mt-4">
-                <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md">Activate
-                    Account
-                </button>
-            </div>
-        </div>
-
-        <div class="hidden w-full p-6 mx-auto rounded-lg shadow-lg bg-gradient-to-r from-blue-400 to-purple-500">
-            <div class="flex items-center justify-between b-2">
-                <div>
-                    <h2 class="text-2xl font-semibold text-white">{{ Auth::user()->username }}, আপনার একাউন্ট অ্যাক্টিভ
-                        নয়।</h2>
-                    <p class="text-white">একাউন্ট অ্যাক্টিভ করতে বাটনে ক্লিক করুন।</p>
-                </div>
-                <div class="hidden">
-                    <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round"
-                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M20 4a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
-                            <path d="M11 5h2M12 12v2m0 4h-1"></path>
-                        </svg>
-                    </div>
-                </div>
-                <!-- Different Button for User Activation -->
-                <button
-                    class="px-4 py-2 font-semibold bg-pink-600 hover:bg-pink-700 rounded-md text-white transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-pink-300">
-                    Activate Account
-                </button>
-            </div>
-        </div>
-
-        <div class="flex-grow-1 hidden">
-            <div
-                class="flex flex-col w-full h-full p-6 rounded-lg shadow-lg bg-gradient-to-r from-blue-400 to-purple-500 text-white">
-
-                <div class="text-center mb-4">
-                    <div>
-                        <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-linecap="round"
-                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M20 4a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
-                                <path d="M11 5h2M12 12v2m0 4h-1"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h2 class="text-2xl font-semibold">মোঃ আকাশ, আপনার একাউন্ট অ্যাক্টিভ নয়।</h2>
-                    <p>একাউন্ট অ্যাক্টিভ করতে নিচের বাটনে ক্লিক করুন।</p>
-                </div>
-
-                <!-- Different Button for User Activation -->
-                <button
-                    class="w-full px-4 py-2 font-semibold bg-pink-600 hover:bg-pink-700 rounded-md text-white transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-pink-300">
-                    একাউন্ট অ্যাক্টিভ করুন
-                </button>
-            </div>
-        </div>
-
+    <div class="flex-1" x-data="{ copied: false }">
         <div class="bg-gradient-to-r from-purple-400 to-pink-600 p-6 rounded-lg shadow-lg text-white">
             <h2 class="text-2xl font-semibold mb-4">Your Referral Code</h2>
             <div class="flex items-center justify-between mb-4">
                 <p class="text-lg">Share this code with your friends:</p>
-                <button id="copyButton"
+                <button onclick="copyToClipboard()"
                         class="px-4 py-2 font-semibold bg-pink-500 hover:bg-pink-600 rounded-md text-white transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-pink-300">
                     Copy
                 </button>
             </div>
             <div class="bg-white p-2 rounded-md">
-                <code id="referralCode"
-                      class="text-lg font-bold text-gray-800">#{{ auth()->user()->referral_id }}</code>
+                <code id="referralCode" class="text-lg font-bold text-gray-800">{{ auth()->user()->referral_id }}</code>
             </div>
 
             <p class="mt-4 hidden">When your friends use this code, both of you will receive rewards!</p>
@@ -101,7 +28,7 @@
                 <p class="text-lg">Share this link with your friends:</p>
             </div>
             <div class="bg-white p-2 rounded-md">
-                <code id="referralCode" class="text-lg font-bold text-gray-800">{{ Auth::user()->referral_link }}</code>
+                <code id="referralCode" class="text-lg font-bold text-gray-800">{{ auth()->user()->referral_link }}</code>
             </div>
 
             <p class="mt-4 hidden">When your friends use this code, both of you will receive rewards!</p>
@@ -138,7 +65,7 @@
 
                     <!-- Join Button -->
                     <a href="https://t.me/your_telegram_group"
-                       class="block bg-blue-500  bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-md transition duration-300 ease-in-out text-white px-4 py-2 rounded-full mt-6 text-center font-semibold hover:bg-blue-600"
+                       class="block bg-blue-500  bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500  px-6 py-3  hover:shadow-md transition duration-300 ease-in-out text-white  rounded-full mt-6 text-center font-semibold hover:bg-blue-600"
                        target="_blank" rel="noopener noreferrer">
                         Join Now
                     </a>
@@ -147,5 +74,19 @@
         </div>
 
     </div>
+
+    <script>
+        function copyToClipboard() {
+            const referralCode = document.getElementById('referralCode');
+            const tempInput = document.createElement('input');
+            document.body.appendChild(tempInput);
+            tempInput.value = referralCode.textContent;
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            alert('Copied to clipboard!');
+        }
+    </script>
 
 </x-app-layout>

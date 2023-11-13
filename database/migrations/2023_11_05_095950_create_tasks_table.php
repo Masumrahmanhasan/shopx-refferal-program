@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('link');
+            $table->string('url');
             $table->decimal('price', 10, 2)->default(0.00);
             $table->string('status')->default('active');
             $table->timestamps();

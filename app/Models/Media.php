@@ -79,7 +79,7 @@ class Media extends Model
     public function getDiskAttribute(): Filesystem|FilesystemAdapter
     {
         if(! $this->_disk){
-            $this->_disk = Storage::disk(config('filesystems.image'));
+            $this->_disk = Storage::disk(config('filesystems.media'));
         }
         return $this->_disk;
     }

@@ -12,9 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(60)->create();
         \App\Models\User::factory(1)->admin()->create();
-        $this->call(TaskTableSeeder::class);
-        $this->call(FaqTableSeeder::class);
+//        $this->call(TaskTableSeeder::class);
+//        $this->call(FaqTableSeeder::class);
     }
 }

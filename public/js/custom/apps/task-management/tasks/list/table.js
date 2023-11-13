@@ -76,64 +76,11 @@ var KTUsersList = function () {
         });
     }
 
-    // Filter Datatable
-    var handleFilterDatatable = () => {
-        // Select filter options
-        const filterForm = document.querySelector('[data-kt-task-table-filter="form"]');
-        const filterButton = filterForm.querySelector('[data-kt-task-table-filter="filter"]');
-        const selectOptions = filterForm.querySelectorAll('select');
-
-        // Filter datatable on submit
-        filterButton.addEventListener('click', function () {
-            var filterString = '';
-
-            // Get filter values
-            selectOptions.forEach((item, index) => {
-                if (item.value && item.value !== '') {
-                    if (index !== 0) {
-                        filterString += ' ';
-                    }
-
-                    // Build filter value options
-                    filterString += item.value;
-                }
-            });
-
-            // Filter datatable --- official docs reference: https://datatables.net/reference/api/search()
-            datatable.search(filterString).draw();
-        });
-    }
-
-    // Reset Filter
-    var handleResetForm = () => {
-        // Select reset button
-        const resetButton = document.querySelector('[data-kt-task-table-filter="reset"]');
-
-        console.log('Resetting', resetButton)
-        // Reset datatable
-        resetButton.addEventListener('click', function () {
-            // Select filter options
-            const filterForm = document.querySelector('[data-kt-task-table-filter="form"]');
-            const selectOptions = filterForm.querySelectorAll('select');
-
-            // Reset select2 values -- more info: https://select2.org/programmatic-control/add-select-clear-items
-            selectOptions.forEach(select => {
-                $(select).val('').trigger('change');
-            });
-
-            // Reset datatable --- official docs reference: https://datatables.net/reference/api/search()
-            datatable.search('').draw();
-        });
-    }
-
-
-    // Delete subscirption
     var handleDeleteRows = () => {
         // Select all delete buttons
 
         const deleteButtons = table.querySelectorAll('[data-kt-tasks-table-filter="delete_row"]');
 
-        console.log('deleteButtons', deleteButtons)
         deleteButtons.forEach(d => {
             // Delete button on click
             d.addEventListener('click', function (e) {
@@ -142,12 +89,14 @@ var KTUsersList = function () {
                 // Select parent row
                 const parent = e.target.closest('tr');
 
-                // Get task name
-                const id = parent.querySelector('[data-kt-tasks-list-filter="user_id"]').value;
+                // Get id
+                const id = parent.querySelector('[data-kt-task-list-filter="task_id"]').value;
+                const formData = new FormData();
+                formData.append('_method', 'DELETE');
 
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: "Are you sure you want to delete " + id + "?",
+                    text: "Are you sure you want to delete this task",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
@@ -159,28 +108,31 @@ var KTUsersList = function () {
                     }
                 }).then(function (result) {
                     if (result.value) {
-                        Swal.fire({
-                            text: "You have deleted " + id + "!.",
-                            icon: "success",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn fw-bold btn-primary",
-                            }
-                        }).then(function () {
-                            // Remove current row
-                            datatable.row($(parent)).remove().draw();
-                            const xmlhttp = new XMLHttpRequest();
-                            xmlhttp.open("DELETE", "/admin/users/"+id,true);
-                            xmlhttp.send();
-                            // window.location.reload()
-                        }).then(function () {
-                            // Detect checked checkboxes
-                            toggleToolbars();
-                        });
+
+                        axios.post(`/admin/tasks/${id}`, formData)
+                            .then(response => {
+                                Swal.fire({
+                                        text: response.data.message,
+                                        icon: "success",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "Ok, got it!",
+                                        customClass: {
+                                            confirmButton: "btn fw-bold btn-primary",
+                                        }
+                                    }).then(function () {
+                                        window.location.reload();
+                                    }).then(function () {
+                                        // Detect checked checkboxes
+                                        toggleToolbars();
+                                    });
+                            })
+                            .catch(error => {
+                                console.error('Error deleting item:', error);
+                                // Handle errors, if any
+                            });
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({
-                            text: id + " was not deleted.",
+                            text: "you have cancelled the delete",
                             icon: "error",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
@@ -271,7 +223,7 @@ var KTUsersList = function () {
     }
 
     // Toggle toolbars
-    const toggleToolbars = () => {
+    var toggleToolbars = () => {
         // Select refreshed checkbox DOM elements
         const allCheckboxes = table.querySelectorAll('tbody [type="checkbox"]');
 
@@ -308,9 +260,7 @@ var KTUsersList = function () {
             initUserTable();
             initToggleToolbar();
             handleSearchDatatable();
-            // handleResetForm();
             handleDeleteRows();
-            handleFilterDatatable();
 
         }
     }

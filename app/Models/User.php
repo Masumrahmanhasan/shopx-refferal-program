@@ -38,6 +38,7 @@ class User extends Authenticatable
         'password',
         'status',
         'referral_id',
+        'referred_by',
     ];
 
     /**
@@ -86,6 +87,28 @@ class User extends Authenticatable
             ->select('first_name', 'last_name', 'referral_id')
             ->where('referral_id', $this->referred_by)
             ->first();
+    }
+
+    public function deductBalance($amount)
+    {
+        $this->decrement('balance', $amount);
+        return $this;
+    }
+
+    public function addBalance($amount)
+    {
+        $this->increment('balance', $amount);
+        return $this;
+    }
+
+    public function scopeCheckWithdrawValidity()
+    {
+        $referrals = UserReferrel::query()
+            ->where('user_id', $this->id)
+            ->where('generation', 'first')
+            ->count();
+
+        return $referrals >= 5;
     }
 
     public function referrals(): HasMany

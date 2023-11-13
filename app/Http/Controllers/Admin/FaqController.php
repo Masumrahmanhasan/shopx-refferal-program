@@ -19,13 +19,16 @@ class FaqController extends Controller
 
     public function create()
     {
-
+        return view('admin.faqs.create');
     }
 
-    public function store(FaqStoreRequest $request): RedirectResponse
+    public function store(FaqStoreRequest $request): \Illuminate\Http\JsonResponse
     {
         Faq::query()->create($request->validated());
-        return redirect()->route('admin.faqs.index');
+        return response()->json([
+            'success' => true,
+            'message' => 'Faq created successfully'
+        ]);
     }
 
     public function edit(): View
@@ -38,9 +41,12 @@ class FaqController extends Controller
 
     }
 
-    public function destroy(Faq $faq): RedirectResponse
+    public function destroy(Faq $faq): \Illuminate\Http\JsonResponse
     {
         $faq->delete();
-        return redirect()->back();
+        return response()->json([
+            'success' => true,
+            'message' => 'Faq Deleted successfully'
+        ]);
     }
 }

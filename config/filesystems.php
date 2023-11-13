@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'public'),
+    'default' => env('FILESYSTEM_DISK', 'media'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,12 +57,11 @@ return [
             'throw' => false,
         ],
 
-        'image' => [
+        'media' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/images'),
             'url'    => env('APP_URL') . '/storage/images'
-        ],
-
+        ]
     ],
 
     /*

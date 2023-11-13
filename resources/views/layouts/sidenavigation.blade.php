@@ -1,4 +1,5 @@
-<div class="relative bg-white border-1 z-1 sm:rounded-lg max-w-xs flex-320 shadow sidenav">
+<div class="relative bg-white border-1 z-10 sm:rounded-lg max-w-xs flex-320 shadow sidenav"
+     :class="{'sidenav-mobile': open, 'sidenav': !open }">
     <div class="overflow-auto px-6 pb-6">
         <div class="avatar p-6 text-center mb-6 relative border-b border-gray-300">
             <span class="relative w-16 h-16 mb-4 rounded-full inline-flex items-center font-semibold justify-center">
@@ -7,7 +8,8 @@
 
                 @if (Auth::user()->status === 'active')
                     <span
-                        class="-bottom-1 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                        class="-bottom-1 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full">
+                    </span>
                @endif
             </span>
 

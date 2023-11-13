@@ -40,14 +40,14 @@ class RegisteredUserController extends Controller
         }
 
         $user = User::query()->create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => $request->password,
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => $request->input('password'),
             'referral_id' => random_int(111111, 999999),
             'referred_by' => $request->input('referral_id'),
-            'status' => 'active',
+            'status' => 'inactive',
         ]);
 
         $referral->referrals()->create([

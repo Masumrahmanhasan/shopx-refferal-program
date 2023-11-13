@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
 use App\Jobs\ReferrelPointJob;
+use App\Models\Media;
 use App\Models\User;
+use App\Models\UserRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -20,6 +24,14 @@ class UserController extends Controller
             ->get();
 
         return view('admin.users.index', compact('users'));
+    }
+
+    public function create()
+    {
+        $users = User::query()
+            ->where('status', 'active')
+            ->get();
+        return view('admin.users.create', compact('users'));
     }
 
     public function unverified(): Factory|View|Application
@@ -38,6 +50,13 @@ class UserController extends Controller
 
     }
 
+    public function store(UserStoreRequest $request)
+    {
+        $user = User::query()->create($request->validated());
+
+        Media::upload($user, $request->file('avatar'), 'media/user/avatar', 'avatar');
+        return response()->json(['message' => 'User created successfully'], 200);
+    }
     /**
      * @return Factory|View|Application
      */
@@ -64,6 +83,21 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->back();
+        return response()->json(['message' => 'User deleted successfully'], 200);
+    }
+
+    public function bulkStatusChange(Request $request)
+    {
+        if ($request->status === 'approved') {
+            UserRequest::query()
+                ->whereIn('user_id', $request->user_id)
+                ->update(['status' => $request->status]);
+            User::query()->whereIn('id', $request->user_id)->update(['status' => 'active']);
+            return response()->json(['message' => 'Status updated successfully'], 200);
+        }
+        UserRequest::query()
+            ->whereIn('user_id', $request->user_id)
+            ->update(['status' => $request->status]);
+        return response()->json(['message' => 'Status updated successfully'], 200);
     }
 }

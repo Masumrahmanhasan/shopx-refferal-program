@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function takeTask(Task $task): RedirectResponse
     {
-        if (auth()->check()) {
+        if (auth()->check() && auth()->user()->status === 'active') {
             auth()->user()?->increment('balance', $task->price);
 
             return redirect()->away($task->link);

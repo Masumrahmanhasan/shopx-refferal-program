@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/referrel', [ReferrelController::class, 'index'])->name('referrel.index');
 
     Route::get('/task', [TaskController::class, 'index'])->name('task');
-    Route::post('/task/{task}/take', [TaskController::class, 'takeTask'])->name('task.take');
+    Route::get('/task/{task}/take', [TaskController::class, 'takeTask'])->name('task.take');
 
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
     Route::post('/verify-payment', [PaymentController::class, 'store'])->name('verify.payment');

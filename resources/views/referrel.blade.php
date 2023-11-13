@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="flex-1 pl-6">
+    <div class="flex-1">
         <div class="bg-gray-100">
             <h2 class="text-2xl font-semibold text-gray-800">Referral List</h2>
 

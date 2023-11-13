@@ -29,6 +29,6 @@ class PaymentController extends Controller
             'transaction_id' => $transaction->id,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('wallet');
     }
 }

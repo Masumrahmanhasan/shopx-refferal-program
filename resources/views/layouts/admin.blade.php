@@ -48,6 +48,8 @@
 <script src="{{ asset('js/scripts.bundle.js') }}"></script>
 
 <script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
 @yield('scripts')
 

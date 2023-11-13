@@ -24,10 +24,10 @@ class TaskStoreRequest extends FormRequest
         return [
             'title' => ['required', 'max:150'],
             'description' => ['required'],
-            'link' => ['required'],
+            'url' => ['required'],
             'price' => ['required'],
             'status' => ['nullable'],
-            'thumbnail' => ['required', 'exclude']
+            'thumbnail' => ['required','image', 'mimes:jpeg,png,jpg,gif,webp', 'exclude']
         ];
     }
 

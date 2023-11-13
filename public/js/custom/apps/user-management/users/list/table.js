@@ -55,8 +55,8 @@ var KTUsersList = function () {
             "pageLength": 10,
             "lengthChange": false,
             'columnDefs': [
-                { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
-                { orderable: false, targets: 6 }, // Disable ordering on column 6 (actions)
+                {orderable: false, targets: 0}, // Disable ordering on column 0 (checkbox)
+                {orderable: false, targets: 6}, // Disable ordering on column 6 (actions)
             ]
         });
 
@@ -108,8 +108,6 @@ var KTUsersList = function () {
     var handleResetForm = () => {
         // Select reset button
         const resetButton = document.querySelector('[data-kt-user-table-filter="reset"]');
-
-        console.log('Resetting', resetButton)
         // Reset datatable
         resetButton.addEventListener('click', function () {
             // Select filter options
@@ -171,7 +169,7 @@ var KTUsersList = function () {
                             // Remove current row
                             datatable.row($(parent)).remove().draw();
                             const xmlhttp = new XMLHttpRequest();
-                            xmlhttp.open("DELETE", "/admin/users/"+id,true);
+                            xmlhttp.open("DELETE", "/admin/users/" + id, true);
                             xmlhttp.send();
                             // window.location.reload()
                         }).then(function () {
@@ -201,14 +199,40 @@ var KTUsersList = function () {
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
 
         // Select elements
-        toolbarBase = document.querySelector('[data-kt-user-table-toolbar="base"]');
         toolbarSelected = document.querySelector('[data-kt-user-table-toolbar="selected"]');
         selectedCount = document.querySelector('[data-kt-user-table-select="selected_count"]');
         const deleteSelected = document.querySelector('[data-kt-user-table-select="delete_selected"]');
+        // const deleteSelected = document.querySelector('[data-kt-user-table-select="status_selected"]');
+        const statusSelect = $('[data-kt-user-table-select="status_selected"]');
 
+        if (statusSelect) {
+            statusSelect.on('select2:select', function (e) {
+                const selectedValue = e.params.data.id;
+                console.log('Selected value:', selectedValue);
+
+                const checkboxValues = [];
+
+                checkboxes.forEach((checkbox, index) => {
+                    if (index !== 0 && checkbox.checked) {
+                        checkboxValues.push(checkbox.value);
+                    }
+                });
+
+                axios.post('/admin/users/bulk-status-change', {
+                    user_id: checkboxValues,
+                    status: selectedValue
+                })
+                    .then(response => {
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        window.location.reload();
+                    });
+
+            });
+        }
         // Toggle delete selected toolbar
         checkboxes.forEach(c => {
-            // Checkbox on click event
             c.addEventListener('click', function () {
                 setTimeout(function () {
                     toggleToolbars();
@@ -217,57 +241,57 @@ var KTUsersList = function () {
         });
 
         // Deleted selected rows
-        deleteSelected.addEventListener('click', function () {
-            // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
-            Swal.fire({
-                text: "Are you sure you want to delete selected customers?",
-                icon: "warning",
-                showCancelButton: true,
-                buttonsStyling: false,
-                confirmButtonText: "Yes, delete!",
-                cancelButtonText: "No, cancel",
-                customClass: {
-                    confirmButton: "btn fw-bold btn-danger",
-                    cancelButton: "btn fw-bold btn-active-light-primary"
-                }
-            }).then(function (result) {
-                if (result.value) {
-                    Swal.fire({
-                        text: "You have deleted all selected customers!.",
-                        icon: "success",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-primary",
-                        }
-                    }).then(function () {
-                        // Remove all selected customers
-                        checkboxes.forEach(c => {
-                            if (c.checked) {
-                                datatable.row($(c.closest('tbody tr'))).remove().draw();
-                            }
-                        });
-
-                        // Remove header checked box
-                        const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
-                        headerCheckbox.checked = false;
-                    }).then(function () {
-                        toggleToolbars(); // Detect checked checkboxes
-                        initToggleToolbar(); // Re-init toolbar to recalculate checkboxes
-                    });
-                } else if (result.dismiss === 'cancel') {
-                    Swal.fire({
-                        text: "Selected customers was not deleted.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-primary",
-                        }
-                    });
-                }
-            });
-        });
+        // deleteSelected.addEventListener('click', function () {
+        //     console.log('Deleted selected')
+        //     Swal.fire({
+        //         text: "Are you sure you want to delete selected customers?",
+        //         icon: "warning",
+        //         showCancelButton: true,
+        //         buttonsStyling: false,
+        //         confirmButtonText: "Yes, delete!",
+        //         cancelButtonText: "No, cancel",
+        //         customClass: {
+        //             confirmButton: "btn fw-bold btn-danger",
+        //             cancelButton: "btn fw-bold btn-active-light-primary"
+        //         }
+        //     }).then(function (result) {
+        //         if (result.value) {
+        //             Swal.fire({
+        //                 text: "You have deleted all selected customers!.",
+        //                 icon: "success",
+        //                 buttonsStyling: false,
+        //                 confirmButtonText: "Ok, got it!",
+        //                 customClass: {
+        //                     confirmButton: "btn fw-bold btn-primary",
+        //                 }
+        //             }).then(function () {
+        //                 // Remove all selected customers
+        //                 checkboxes.forEach(c => {
+        //                     if (c.checked) {
+        //                         datatable.row($(c.closest('tbody tr'))).remove().draw();
+        //                     }
+        //                 });
+        //
+        //                 // Remove header checked box
+        //                 const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
+        //                 headerCheckbox.checked = false;
+        //             }).then(function () {
+        //                 toggleToolbars(); // Detect checked checkboxes
+        //                 initToggleToolbar(); // Re-init toolbar to recalculate checkboxes
+        //             });
+        //         } else if (result.dismiss === 'cancel') {
+        //             Swal.fire({
+        //                 text: "Selected customers was not deleted.",
+        //                 icon: "error",
+        //                 buttonsStyling: false,
+        //                 confirmButtonText: "Ok, got it!",
+        //                 customClass: {
+        //                     confirmButton: "btn fw-bold btn-primary",
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
     }
 
     // Toggle toolbars
@@ -290,10 +314,10 @@ var KTUsersList = function () {
         // Toggle toolbars
         if (checkedState) {
             selectedCount.innerHTML = count;
-            toolbarBase.classList.add('d-none');
+            // toolbarBase.classList.add('d-none');
             toolbarSelected.classList.remove('d-none');
         } else {
-            toolbarBase.classList.remove('d-none');
+            // toolbarBase.classList.remove('d-none');
             toolbarSelected.classList.add('d-none');
         }
     }
@@ -310,7 +334,7 @@ var KTUsersList = function () {
             handleSearchDatatable();
             // handleResetForm();
             handleDeleteRows();
-            handleFilterDatatable();
+            // handleFilterDatatable();
 
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,12 +11,25 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data = User::where('role', '!=', 'admin')->when(true, function ($query) {
-            return $query->selectRaw('count(*) as total')
-                ->selectRaw('sum(status = "active") as active')
-                ->selectRaw('sum(status = "inactive") as inactive');
-        })->first();
+        $data = User::query()
+            ->where('role', '!=', 'admin')
+            ->leftJoin('user_requests', 'users.id', '=', 'user_requests.user_id')
+            ->selectRaw('COALESCE(count(distinct users.id), 0) as total')
+            ->selectRaw('COALESCE(sum(users.status = "active"), 0) as active')
+            ->selectRaw('COALESCE(sum(users.status = "inactive"), 0) as inactive')
+            ->selectRaw('COALESCE(sum(user_requests.status = "new"), 0) as new_requests')
+            ->groupBy('users.id')
+            ->first();
 
-        return view('admin.dashboard', compact('data'));
+        if (!$data) {
+            $data = (object)[
+                'total' => 0,
+                'active' => 0,
+                'inactive' => 0,
+                'new_requests' => 0,
+            ];
+        }
+        $transactions = Transaction::query()->take(5)->latest()->get();
+        return view('admin.dashboard', compact('data', 'transactions'));
     }
 }

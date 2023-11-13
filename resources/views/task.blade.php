@@ -19,7 +19,7 @@
                     <h3 class="text-lg font-bold">{{ $task->title }}</h3>
                     <p class="mt-2 text-sm text-[#444]">{{ $task->description }}</p>
 
-                    <a href="@if(Auth::user()->status !== 'active') {{$task->link}} @else {{ route('payment.index') }} @endif"
+                    <a href="{{ route('task.take', $task) }}"
                        class="block mt-4 w-full text-center bg-[#7F4DCA] py-2 text-white rounded-lg"
                     target="__blank">Take Task</a>
                 </div>
