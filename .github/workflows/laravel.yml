@@ -44,8 +44,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ftp.profitwork-bd.com
-          username: profitwork@profitwork-bd.com
-          password: jI!fOq5$dxMa
+          username: "profitwo"
+          password: "[NJzu62I#Mmx41"
           exclude: |
             **/.git*
             **/.git*/**
