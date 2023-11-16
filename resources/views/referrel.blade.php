@@ -6,26 +6,31 @@
     </x-slot>
     <div class="flex-1">
         <div class="bg-gray-100">
-            <h2 class="text-2xl font-semibold text-gray-800">Referral List</h2>
-
-            <!-- Your User Card -->
-            <div class="bg-white p-4 rounded-lg shadow-md mt-6">
-                <div class="flex items-center">
-                    <div class="rounded-full bg-blue-500 h-12 w-12 flex items-center justify-center">
-                        <svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
-                            <path d="M20 12H4"></path>
-                            <path d="M8 16V20"></path>
-                            <path d="M8 8V4"></path>
-                            <path d="M20 16V20"></path>
-                            <path d="M16 8L8 8"></path>
-                        </svg>
+            <div class="bg-white border border-gray-300 p-4 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Generation Referral Counts</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
+                        <div>
+                            <p class="text-lg font-semibold mb-2">1st Generation</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">10</p>
+                        </div>
                     </div>
-                    <div class="ml-4">
-                        <p class="text-lg font-semibold text-gray-800">Your Name</p>
-                        <p class="text-gray-600">Your Referral Code: ABC123</p>
+                    <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
+                        <div>
+                            <p class="text-lg font-semibold mb-2">2nd Generation</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">20</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
+                        <div>
+                            <p class="text-lg font-semibold mb-2">3rd Generation</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">15</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
 
             <!-- Referred Users List -->
             <div class="mt-6">
@@ -51,27 +56,9 @@
                         <p class="text-green-600 font-semibold">+ $10.00</p>
                     </div>
 
-                    <!-- User Item 2 -->
                     <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
-                        <div class="flex items-center">
-                            <div class="rounded-full bg-blue-500 h-10 w-10 flex items-center justify-center">
-                                <svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
-                                    <path d="M20 12H4"></path>
-                                    <path d="M8 16V20"></path>
-                                    <path d="M8 8V4"></path>
-                                    <path d="M20 16V20"></path>
-                                    <path d="M16 8L8 8"></path>
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-lg font-semibold text-gray-800">Referred User 2</p>
-                                <p class="text-gray-600">Referred Code: DEF789</p>
-                            </div>
-                        </div>
-                        <p class="text-green-600 font-semibold">+ $20.00</p>
+                        No User Used Your code yet
                     </div>
-
-                    <!-- Add more user items as needed -->
                 </div>
             </div>
         </div>
