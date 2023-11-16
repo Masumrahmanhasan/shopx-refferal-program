@@ -15,4 +15,9 @@ class Transaction extends Model
     {
         return Carbon::parse($value)->isoFormat('MMMM Do YYYY');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -103,8 +103,8 @@
 
 
                 <li
-                    class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if (Route::currentRouteName() === 'freelance') bg-purple_light-50 text-white active @endif">
-                    <a href="{{ route('profile.edit') }}" class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                    class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu">
+                    <a href="javascript:;void(0)" class="flex items-center mb-2 font-bolder px-3 py-2 active"
                         aria-expanded="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                             class="hover:fill-dark">
@@ -122,8 +122,8 @@
                 </li>
 
                 <li
-                    class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu @if (Route::currentRouteName() === 'Transfer') bg-purple_light-50 text-white active @endif">
-                    <a href="{{ route('profile.edit') }}" class="flex items-center mb-2 font-bolder px-3 py-2 active"
+                    class="hover:bg-purple_light-50 rounded-3xl hover:text-white user-menu">
+                    <a href="javascript:;void(0)" class="flex items-center mb-2 font-bolder px-3 py-2 active"
                         aria-expanded="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
                             class="hover:fill-dark">
