@@ -32,6 +32,8 @@ jobs:
         run: |
           php artisan optimize:clear
           php artisan config:clear
+          php artisan cache:clear
+
       - name: Build Project
         run: |
           npm install
@@ -39,6 +41,9 @@ jobs:
 
       - name: Generate key
         run: php artisan key:generate
+
+      - name: Link Storage
+        run: php artisan storage:link
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
