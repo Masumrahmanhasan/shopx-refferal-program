@@ -1,5 +1,9 @@
 <x-app-layout>
-
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Referral') }}
+        </h2>
+    </x-slot>
     <div class="flex-1">
         <div class="bg-gray-100">
             <h2 class="text-2xl font-semibold text-gray-800">Referral List</h2>
