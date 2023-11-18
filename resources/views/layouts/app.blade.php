@@ -27,7 +27,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100" x-data="{ open: false }">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
@@ -40,7 +40,7 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main >
             <div class="py-4">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:pl-3 sm:pr-3">
                     @if(Auth::user()->status === 'inactive')
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     @endif
-                    <div class="flex items-start mt-4 gap-5">
+                    <div class="flex items-start mt-4 gap-5" >
                         @include('layouts.sidenavigation')
                         {{ $slot }}
                     </div>
