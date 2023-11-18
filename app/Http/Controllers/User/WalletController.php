@@ -13,26 +13,4 @@ class WalletController extends Controller
     {
         return view('wallet');
     }
-
-    public function withdraw(Request $request)
-    {
-        $request->validate([
-            'account' => 'required',
-            'amount' => 'required',
-            'gateway' => 'required',
-        ]);
-
-        Transaction::query()->create([
-            'user_id' => auth()->id(),
-            'gateway' => $request->input('gateway'),
-            'trxn_id' => Str::random(10),
-            'amount' => $request->input('amount'),
-            'account' => $request->input('account'),
-            'type' => 'withdraw',
-        ]);
-
-        auth()->user()?->deductBalance($request->input('amount'));
-
-        return redirect()->route('wallet');
-    }
 }

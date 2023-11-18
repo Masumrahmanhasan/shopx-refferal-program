@@ -11,8 +11,8 @@ class UserReferrel extends Model
 
     protected $guarded = [];
 
-    public function user()
+    public function associate()
     {
-        $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'referrel_id');
     }
 }

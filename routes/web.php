@@ -35,12 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::patch('/profile/upload-avatar', [ProfileController::class, 'upload'])->name('profile.upload');
 
-    Route::get('/support-ticket', [SupportTicketController::class, 'index'])->name('support.index');
+    Route::get('/support', [SupportTicketController::class, 'index'])->name('support.index');
     Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
     Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
-    Route::post('/withdraw', [WalletController::class, 'withdraw'])->name('wallet.withdraw');
-
     Route::get('/referrel', [ReferrelController::class, 'index'])->name('referrel.index');
 
     Route::get('/task', [TaskController::class, 'index'])->name('task');

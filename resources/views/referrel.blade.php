@@ -12,24 +12,23 @@
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
                         <div>
                             <p class="text-lg font-semibold mb-2">1st Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">10</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data['first'] }}</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
                         <div>
                             <p class="text-lg font-semibold mb-2">2nd Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">20</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data['second'] }}</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
                         <div>
                             <p class="text-lg font-semibold mb-2">3rd Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">15</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data['third'] }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-
 
 
             <!-- Referred Users List -->
@@ -37,28 +36,33 @@
                 <h3 class="text-xl font-semibold text-gray-800">Users Who Used Your Referral Code</h3>
                 <div class="mt-4 space-y-4">
                     <!-- User Item 1 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
-                        <div class="flex items-center">
-                            <div class="rounded-full bg-blue-500 h-10 w-10 flex items-center justify-center">
-                                <svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
-                                    <path d="M20 12H4"></path>
-                                    <path d="M8 16V20"></path>
-                                    <path d="M8 8V4"></path>
-                                    <path d="M20 16V20"></path>
-                                    <path d="M16 8L8 8"></path>
-                                </svg>
+                    @forelse($referrals as $referral)
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="rounded-full bg-blue-500 h-10 w-10 flex items-center justify-center">
+                                    <svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                         stroke-width="2" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
+                                        <path d="M20 12H4"></path>
+                                        <path d="M8 16V20"></path>
+                                        <path d="M8 8V4"></path>
+                                        <path d="M20 16V20"></path>
+                                        <path d="M16 8L8 8"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-lg font-semibold text-gray-800">{{ $referral->associate->username }}</p>
+                                    <p class="text-gray-600">Generation: {{ ucfirst($referral->generation) }}
+                                        Generation</p>
+                                </div>
                             </div>
-                            <div class="ml-4">
-                                <p class="text-lg font-semibold text-gray-800">Referred User 1</p>
-                                <p class="text-gray-600">Referred Code: XYZ456</p>
-                            </div>
+                            <p class="text-green-600 font-semibold">{{ ucfirst($referral->associate->status) }}</p>
                         </div>
-                        <p class="text-green-600 font-semibold">+ $10.00</p>
-                    </div>
+                    @empty
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                            No User Used Your code yet
+                        </div>
 
-                    <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
-                        No User Used Your code yet
-                    </div>
+                    @endforelse
                 </div>
             </div>
         </div>

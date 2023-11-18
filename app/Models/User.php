@@ -113,7 +113,7 @@ class User extends Authenticatable
 
     public function referrals(): HasMany
     {
-        return $this->hasMany(UserReferrel::class);
+        return $this->hasMany(UserReferrel::class, 'user_id', 'id');
     }
 
     public function avatar(): MorphOne
