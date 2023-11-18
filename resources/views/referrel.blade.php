@@ -12,19 +12,19 @@
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
                         <div>
                             <p class="text-lg font-semibold mb-2">1st Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data['first'] }}</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->first }}</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
                         <div>
                             <p class="text-lg font-semibold mb-2">2nd Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data['second'] }}</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->second }}</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
                         <div>
                             <p class="text-lg font-semibold mb-2">3rd Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data['third'] }}</p>
+                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->third }}</p>
                         </div>
                     </div>
                 </div>
