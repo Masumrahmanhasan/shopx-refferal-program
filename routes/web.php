@@ -45,7 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/task/{task}/take', [TaskController::class, 'takeTask'])->name('task.take');
 
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
-    Route::post('/verify-payment', [PaymentController::class, 'store'])->name('verify.payment');
 
 });
 

@@ -13,22 +13,4 @@ class PaymentController extends Controller
     {
         return view('payment.index');
     }
-
-    public function store(Request $request): RedirectResponse
-    {
-        $transaction = Transaction::query()->create([
-            'user_id'=> auth()->id(),
-            'account' => $request->input('account'),
-            'gateway' => $request->input('gateway'),
-            'trxn_id' => $request->input('trxn_id'),
-            'amount' => 200,
-            'type' => 'activation',
-        ]);
-
-        auth()->user()?->activation()->create([
-            'transaction_id' => $transaction->id,
-        ]);
-
-        return redirect()->route('wallet');
-    }
 }

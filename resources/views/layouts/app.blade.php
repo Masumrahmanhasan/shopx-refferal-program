@@ -15,6 +15,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('plugins/formvalidation/dist/css/formValidation.css') }}">
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll("pre").forEach((block) => {
@@ -102,8 +103,8 @@
         </main>
     </div>
 
-
     @yield('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         function uploadAvatar(input) {
@@ -123,6 +124,17 @@
                 form.submit();
             }
         }
+    </script>
+
+    <script>
+        window.addEventListener('swal:clipboardCopied', event => {
+
+            Swal.fire({
+                title:event.detail[0].title,
+                text:event.detail[0].text,
+                icon:event.detail[0].type,
+            });
+        })
     </script>
 
 
