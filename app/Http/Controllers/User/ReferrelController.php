@@ -21,6 +21,13 @@ class ReferrelController extends Controller
             ->groupBy('user_id')
             ->first();
 
+        if (!$data) {
+            $data = (object)[
+                'first' => 0,
+                'second' => 0,
+                'third' => 0,
+            ];
+        }
         return view('referrel', compact('referrals', 'data'));
     }
 }
