@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Jobs\GenerationJob;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -50,11 +51,9 @@ class RegisteredUserController extends Controller
             'status' => 'inactive',
         ]);
 
-        $referral->referrals()->create([
-            'referrel_id' => $user->id
-        ]);
-
         Auth::login($user);
+
+        GenerationJob::dispatch($user, $referral);
 
         return redirect(RouteServiceProvider::HOME);
     }

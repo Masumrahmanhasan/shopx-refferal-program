@@ -39,6 +39,7 @@ class User extends Authenticatable
         'status',
         'referral_id',
         'referred_by',
+        'balance',
     ];
 
     /**

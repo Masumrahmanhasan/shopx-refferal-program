@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('status')->default('inactive');
             $table->enum('role', ['admin', 'user'])->default('user');
-            $table->decimal('balance', 10, 2)->default(0.00);
+            $table->integer('balance')->default(0);
             $table->string('referral_id')->unique();
             $table->string('referred_by')->nullable();
             $table->rememberToken();
