@@ -45,10 +45,10 @@ class WithdrawBalance extends Component
 
     public function openModal()
     {
-        if ((Auth::user()->balance <= 200) && !Auth::user()?->checkWithdrawValidity()) {
-            $this->withdrawAlertModal = true;
-        } else {
+        if ((Auth::user()->balance >= 200) && Auth::user()?->checkWithdrawValidity()) {
             $this->withdrawAlertModal = false;
+        } else {
+            $this->withdrawAlertModal = true;
         }
         $this->balanceWithdrawModal = true;
     }

@@ -20,8 +20,8 @@ class TaskFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
-            'link' => fake()->url(),
-            'price' => fake()->randomFloat(2, 0, 9999999.99),
+            'url' => fake()->url(),
+            'price' => fake()->randomFloat(2, 0, 200),
             'status' => 'active',
         ];
     }

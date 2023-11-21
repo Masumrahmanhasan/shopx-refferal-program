@@ -10,8 +10,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::query()->paginate(10);
-        return view('task', compact('tasks'));
+        return view('task');
     }
 
     /**
@@ -22,8 +21,8 @@ class TaskController extends Controller
     {
         if (auth()->check() && auth()->user()->status === 'active') {
             auth()->user()?->increment('balance', $task->price);
-
-            return redirect()->away($task->link);
+            auth()->user()?->tasks()->attach($task);
+            return redirect()->away($task->url);
         }
         return redirect()->route('payment.index');
     }
