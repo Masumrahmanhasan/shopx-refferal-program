@@ -1,67 +1,71 @@
 "use strict";
 
 // Class definition
-var KTAccountSettingsProfileDetails = function () {
-    // Private variables
-    var form;
-    var submitButton;
-    var validation;
-
+var KTAccountSettingsBillings = function () {
     // Private functions
-    var initValidation = function () {
-        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+    var initSettings = function () {
+
+        var signInMainEl = document.getElementById('kt_signin_email');
+        var signInEditEl = document.getElementById('kt_signin_email_edit');
+
+        // button elements
+        var signInChangeEmail = document.getElementById('kt_signin_email_button');
+        var signInCancelEmail = document.getElementById('kt_signin_cancel');
+
+        signInChangeEmail.querySelector('button').addEventListener('click', function () {
+            toggleChangeEmail();
+        });
+
+        signInCancelEmail.addEventListener('click', function () {
+            toggleChangeEmail();
+        });
+
+        var toggleChangeEmail = function () {
+            signInMainEl.classList.toggle('d-none');
+            signInChangeEmail.classList.toggle('d-none');
+            signInEditEl.classList.toggle('d-none');
+        }
+    }
+
+    var handleChangeAccounts = function (e) {
+        var validation;
+
+        // form elements
+        var signInForm = document.getElementById('kt_signin_change_accounts');
+
         validation = FormValidation.formValidation(
-            form,
+            signInForm,
             {
                 fields: {
-                    first_name: {
+                    bkash: {
                         validators: {
                             notEmpty: {
-                                message: 'First name is required'
+                                message: 'Bkash is required'
                             }
                         }
                     },
-                    last_name: {
+
+                    nagad: {
                         validators: {
                             notEmpty: {
-                                message: 'Last name is required'
-                            }
-                        }
-                    },
-                    email: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Email is required'
-                            }
-                        }
-                    },
-                    phone: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Contact phone number is required'
+                                message: 'Nagad is required'
                             }
                         }
                     }
                 },
-                plugins: {
+
+                plugins: { //Learn more: https://formvalidation.io/guide/plugins
                     trigger: new FormValidation.plugins.Trigger(),
-                    submitButton: new FormValidation.plugins.SubmitButton(),
-                    //defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
                     bootstrap: new FormValidation.plugins.Bootstrap5({
-                        rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
+                        rowSelector: '.fv-row'
                     })
                 }
             }
         );
-    }
 
-    var handleForm = function () {
-        submitButton.addEventListener('click', function (e) {
+        signInForm.querySelector('#kt_signin_submit').addEventListener('click', function (e) {
             e.preventDefault();
-
-            const formData = new FormData(form);
+            const formData = new FormData(signInForm);
             const formDataObject = {};
             formData.forEach((value, key) => {
                 formDataObject[key] = value;
@@ -69,7 +73,7 @@ var KTAccountSettingsProfileDetails = function () {
 
             validation.validate().then(function (status) {
                 if (status === 'Valid') {
-                    axios.post('/admin/update-profile', formDataObject)
+                    axios.post('/admin/billings/update', formDataObject)
                         .then(response => {
                             Swal.fire({
                                 text: "Form has been successfully submitted!",
@@ -102,7 +106,6 @@ var KTAccountSettingsProfileDetails = function () {
                         // submitButton.removeAttribute('data-kt-indicator');
                         // submitButton.disabled = false;
                     });
-
                 } else {
                     swal.fire({
                         text: "Sorry, looks like there are some errors detected, please try again.",
@@ -110,27 +113,22 @@ var KTAccountSettingsProfileDetails = function () {
                         buttonsStyling: false,
                         confirmButtonText: "Ok, got it!",
                         customClass: {
-                            confirmButton: "btn fw-bold btn-light-primary"
+                            confirmButton: "btn font-weight-bold btn-light-primary"
                         }
                     });
                 }
             });
         });
     }
-
-    // Public methods
     return {
         init: function () {
-            form = document.getElementById('kt_account_profile_details_form');
-            submitButton = form.querySelector('#kt_account_profile_details_submit');
-
-            initValidation();
-            handleForm();
+            initSettings();
+            handleChangeAccounts();
         }
     }
 }();
 
 // On document ready
 KTUtil.onDOMContentLoaded(function() {
-    KTAccountSettingsProfileDetails.init();
+    KTAccountSettingsBillings.init();
 });

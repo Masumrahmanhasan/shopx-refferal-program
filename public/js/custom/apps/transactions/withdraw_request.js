@@ -1,10 +1,9 @@
 "use strict";
 
-var KTUsersList = function () {
+var KTWithdrawRequestList = function () {
     // Define shared variables
-    var table = document.getElementById('kt_table_users');
+    var table = document.getElementById('kt_table_withdraw_request');
     var datatable;
-    var toolbarBase;
     var toolbarSelected;
     var selectedCount;
 
@@ -76,42 +75,76 @@ var KTUsersList = function () {
         });
     }
 
+
     // Init toggle toolbar
     var initToggleToolbar = () => {
-        // Toggle selected action toolbar
         // Select all checkboxes
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
 
-        // Select elements
-        toolbarBase = document.querySelector('[data-kt-user-table-toolbar="base"]');
         toolbarSelected = document.querySelector('[data-kt-user-table-toolbar="selected"]');
         selectedCount = document.querySelector('[data-kt-user-table-select="selected_count"]');
         const deleteSelected = document.querySelector('[data-kt-user-table-select="delete_selected"]');
-        // const deleteSelected = document.querySelector('[data-kt-user-table-select="status_selected"]');
-        const statusSelect = $('[data-kt-user-table-select="status_selected"]');
 
-        if (statusSelect) {
-            statusSelect.on('select2:select', function (e) {
-                const selectedValue = e.params.data.id;
-                const checkboxValues = [];
+        deleteSelected.addEventListener('click', function () {
 
-                checkboxes.forEach((checkbox, index) => {
-                    if (index !== 0 && checkbox.checked) {
-                        checkboxValues.push(checkbox.value);
-                    }
-                });
-
-                axios.post('/admin/users/bulk-status-change', {
-                    user_id: checkboxValues,
-                    status: selectedValue
-                }).then(response => {
-                    window.location.reload();
-                }).catch(error => {
-                    window.location.reload();
-                });
-
+            const checkboxValues = [];
+            checkboxes.forEach((checkbox, index) => {
+                if (index !== 0 && checkbox.checked) {
+                    checkboxValues.push(checkbox.value);
+                }
             });
-        }
+
+            console.log('ids',checkboxValues)
+            Swal.fire({
+                text: "Are you sure you want to delete selected users?",
+                icon: "warning",
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonText: "Yes, delete!",
+                cancelButtonText: "No, cancel",
+                customClass: {
+                    confirmButton: "btn fw-bold btn-danger",
+                    cancelButton: "btn fw-bold btn-active-light-primary"
+                }
+            }).then(function (result) {
+                if (result.value) {
+                    Swal.fire({
+                        text: "You have deleted all selected users!.",
+                        icon: "success",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok, got it!",
+                        customClass: {
+                            confirmButton: "btn fw-bold btn-primary",
+                        }
+                    }).then(function () {
+                        axios.post('/admin/users/bulk-delete', {
+                            user_id: checkboxValues,
+                        }).then(response => {
+                            window.location.reload();
+                        }).catch(error => {
+                            window.location.reload();
+                        });
+
+                        const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
+                        headerCheckbox.checked = false;
+                    }).then(function () {
+                        toggleToolbars(); // Detect checked checkboxes
+                        initToggleToolbar(); // Re-init toolbar to recalculate checkboxes
+                    });
+                } else if (result.dismiss === 'cancel') {
+                    Swal.fire({
+                        text: "Selected customers was not deleted.",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok, got it!",
+                        customClass: {
+                            confirmButton: "btn fw-bold btn-primary",
+                        }
+                    });
+                }
+            });
+        });
+
         // Toggle delete selected toolbar
         checkboxes.forEach(c => {
             c.addEventListener('click', function () {
@@ -120,6 +153,9 @@ var KTUsersList = function () {
                 }, 50);
             });
         });
+
+
+
     }
 
     // Toggle toolbars
@@ -142,10 +178,10 @@ var KTUsersList = function () {
         // Toggle toolbars
         if (checkedState) {
             selectedCount.innerHTML = count;
-            toolbarBase.classList.add('d-none');
+            // toolbarBase.classList.add('d-none');
             toolbarSelected.classList.remove('d-none');
         } else {
-            toolbarBase.classList.remove('d-none');
+            // toolbarBase.classList.remove('d-none');
             toolbarSelected.classList.add('d-none');
         }
     }
@@ -167,5 +203,5 @@ var KTUsersList = function () {
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTUsersList.init();
+    KTWithdrawRequestList.init();
 });

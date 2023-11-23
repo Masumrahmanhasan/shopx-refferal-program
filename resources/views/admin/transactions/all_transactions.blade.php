@@ -116,6 +116,8 @@
                             <th class="min-w-125px">Transaction Id</th>
                             <th class="min-w-125px">User Info</th>
                             <th class="min-w-125px">Amount</th>
+                            <th class="min-w-125px">Sender Number</th>
+                            <th class="min-w-125px">Gateway</th>
                             <th class="min-w-125px">Type</th>
                             <th class="min-w-125px">Status</th>
                             <th class="text-end min-w-100px">Actions</th>
@@ -144,7 +146,8 @@
                                         <a href="#">
                                             <div class="symbol-label">
                                                 @if($transaction->user->thumbnail)
-                                                    <img src="{{ $transaction->user->thumbnail }}" alt="{{ $transaction->user->username }}"
+                                                    <img src="{{ $transaction->user->thumbnail }}"
+                                                         alt="{{ $transaction->user->username }}"
                                                          class="w-100"/>
                                                 @else
                                                     <div
@@ -165,12 +168,21 @@
                                 <!--end::User=-->
                                 <!--begin::Role=-->
                                 <td>{{ $transaction->amount }}</td>
+                                <td>
+                                    <div
+                                        class="badge badge-light-dark fw-bolder">{{ ucfirst($transaction->account) }}</div>
+                                </td>
+                                <td>
+                                    <div
+                                        class="badge badge-light-info fw-bolder">{{ ucfirst($transaction->gateway) }}</div>
+                                </td>
                                 <td>{{ ucfirst($transaction->type) }}</td>
                                 <!--end::Role=-->
 
                                 <!--begin::Two step=-->
                                 <td>
-                                    <div class="badge badge-light-success fw-bolder">{{ ucfirst($transaction->status) }}</div>
+                                    <div
+                                        class="badge badge-light-success fw-bolder">{{ ucfirst($transaction->status) }}</div>
                                 </td>
 
                                 <td class="text-end">
@@ -187,23 +199,30 @@
                                     </span>
                                     </a>
 
-                                    <div
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
+                                    <div class="menu menu-sub
+                                    menu-sub-dropdown
+                                    menu-column
+                                    menu-rounded
+                                    menu-gray-600
+                                    menu-state-bg-light-primary
+                                    fw-bold fs-7
+                                    w-125px
+                                    py-4"
+                                         data-kt-menu="true">
+
                                         <div class="menu-item px-3">
                                             <a href=""
                                                class="menu-link px-3">Edit</a>
                                         </div>
 
-
-                                        <input type="hidden" data-kt-task-list-filter="task_id" value="{{ $transaction->id }}">
+                                        <input type="hidden" data-kt-task-list-filter="task_id"
+                                               value="{{ $transaction->id }}">
                                         <div class="menu-item px-3">
                                             <a href="#" class="menu-link px-3" data-kt-tasks-table-filter="delete_row">Delete</a>
                                         </div>
-                                        <!--end::Menu item-->
+
                                     </div>
-                                    <!--end::Menu-->
+
                                 </td>
                                 <!--end::Action=-->
                             </tr>

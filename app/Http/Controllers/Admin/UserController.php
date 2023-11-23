@@ -62,9 +62,11 @@ class UserController extends Controller
      */
     public function requested(): Factory|View|Application
     {
-        $users = User::query()->with('avatar')
+        $users = User::query()->with('avatar', 'activation.transaction')
             ->where('status', 'inactive')
-            ->whereHas('activation')
+            ->whereHas('activation', function($query) {
+                return $query->whereNot('status', 'reject');
+            })
             ->paginate(10);
 
         return view('admin.users.requested', compact('users'));
@@ -86,6 +88,12 @@ class UserController extends Controller
         return response()->json(['message' => 'User deleted successfully'], 200);
     }
 
+    public function bulkDelete(Request $request)
+    {
+        User::query()->whereIn('id', $request->user_id)->delete();
+        return response()->json(['message' => 'Users Deleted successfully'], 200);
+    }
+
     public function bulkStatusChange(Request $request)
     {
         if ($request->status === 'approved') {
@@ -95,9 +103,11 @@ class UserController extends Controller
             User::query()->whereIn('id', $request->user_id)->update(['status' => 'active']);
             return response()->json(['message' => 'Status updated successfully'], 200);
         }
+
         UserRequest::query()
             ->whereIn('user_id', $request->user_id)
             ->update(['status' => $request->status]);
+
         return response()->json(['message' => 'Status updated successfully'], 200);
     }
 }

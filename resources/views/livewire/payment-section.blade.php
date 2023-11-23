@@ -45,7 +45,7 @@
 
                 <h5
                     class="flex gap-3 items-center justify-center bg-[#232323] p-5 mt-4 rounded-xl text-2xl text-white">
-                    01976630646
+                    {{ get_settings('bkash') }}
                     <button>
                         <img src="/images/copy.png" alt="">
                     </button>
@@ -80,8 +80,8 @@
 
                 <h5
                     class="flex gap-3 items-center justify-center bg-[#232323] p-5 mt-4 rounded-xl text-2xl text-white">
-                    01976630646
-                    <button wire:click="copyToClipboard(01976630646)">
+                    {{ get_settings('nagad') }}
+                    <button wire:click="copyToClipboard({{ get_settings('nagad') }})">
                         <img src="/images/copy.png" alt="">
                     </button>
                 </h5>

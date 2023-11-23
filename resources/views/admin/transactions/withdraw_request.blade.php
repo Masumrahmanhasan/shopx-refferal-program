@@ -102,7 +102,7 @@
                 <!--begin::Card body-->
                 <div class="card-body py-4">
                     <!--begin::Table-->
-                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_tasks">
+                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_withdraw_request">
                         <!--begin::Table head-->
                         <thead>
                         <!--begin::Table row-->
@@ -110,15 +110,16 @@
                             <th class="w-10px pe-2">
                                 <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
                                     <input class="form-check-input" type="checkbox" data-kt-check="true"
-                                           data-kt-check-target="#kt_table_tasks .form-check-input" value="1"/>
+                                           data-kt-check-target="#kt_table_withdraw_request .form-check-input" value="1"/>
                                 </div>
                             </th>
                             <th class="min-w-125px">Transaction Id</th>
                             <th class="min-w-125px">User Info</th>
                             <th class="min-w-125px">Amount</th>
+                            <th class="min-w-125px">Sender Number</th>
+                            <th class="min-w-125px">Gateway</th>
                             <th class="min-w-125px">Type</th>
                             <th class="min-w-125px">Status</th>
-                            <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
                         </thead>
@@ -131,7 +132,7 @@
                                 <!--begin::Checkbox-->
                                 <td>
                                     <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="1"/>
+                                        <input class="form-check-input" type="checkbox" value="{{ $transaction->id }}"/>
                                     </div>
                                 </td>
 
@@ -165,47 +166,23 @@
                                 <!--end::User=-->
                                 <!--begin::Role=-->
                                 <td>{{ $transaction->amount }}</td>
+                                <td>
+                                    <div
+                                        class="badge badge-light-dark fw-bolder">{{ ucfirst($transaction->account) }}</div>
+                                </td>
+                                <td>
+                                    <div
+                                        class="badge badge-light-info fw-bolder">{{ ucfirst($transaction->gateway) }}</div>
+                                </td>
                                 <td>{{ ucfirst($transaction->type) }}</td>
                                 <!--end::Role=-->
-
+                                <input type="hidden" data-kt-task-list-filter="task_id" value="{{ $transaction->id }}">
                                 <!--begin::Two step=-->
                                 <td>
+
                                     <div class="badge badge-light-success fw-bolder">{{ ucfirst($transaction->status) }}</div>
                                 </td>
 
-                                <td class="text-end">
-                                    <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                       data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                        <span class="svg-icon svg-icon-5 m-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                             height="24" viewBox="0 0 24 24" fill="none">
-                                            <path
-                                                d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                fill="currentColor"/>
-                                        </svg>
-                                    </span>
-                                    </a>
-
-                                    <div
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href=""
-                                               class="menu-link px-3">Edit</a>
-                                        </div>
-
-
-                                        <input type="hidden" data-kt-task-list-filter="task_id" value="{{ $transaction->id }}">
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-tasks-table-filter="delete_row">Delete</a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                </td>
-                                <!--end::Action=-->
                             </tr>
                         @endforeach
                         </tbody>
@@ -217,4 +194,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="{{ asset('js/custom/apps/transactions/withdraw_request.js') }}"></script>
 @endsection

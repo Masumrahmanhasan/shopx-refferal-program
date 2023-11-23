@@ -23,9 +23,13 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::query()
             ->with('user')
-            ->where('status', 'approved')
             ->get();
 
         return view('admin.transactions.all_transactions', compact('transactions'));
+    }
+
+    public function changeStatus()
+    {
+
     }
 }
