@@ -10,7 +10,7 @@
                  data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                  class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Transactions</h1>
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">All Transactions</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -120,7 +120,6 @@
                             <th class="min-w-125px">Gateway</th>
                             <th class="min-w-125px">Type</th>
                             <th class="min-w-125px">Status</th>
-                            <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
                         </thead>
@@ -185,45 +184,6 @@
                                         class="badge badge-light-success fw-bolder">{{ ucfirst($transaction->status) }}</div>
                                 </td>
 
-                                <td class="text-end">
-                                    <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                       data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                        <span class="svg-icon svg-icon-5 m-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                             height="24" viewBox="0 0 24 24" fill="none">
-                                            <path
-                                                d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                fill="currentColor"/>
-                                        </svg>
-                                    </span>
-                                    </a>
-
-                                    <div class="menu menu-sub
-                                    menu-sub-dropdown
-                                    menu-column
-                                    menu-rounded
-                                    menu-gray-600
-                                    menu-state-bg-light-primary
-                                    fw-bold fs-7
-                                    w-125px
-                                    py-4"
-                                         data-kt-menu="true">
-
-                                        <div class="menu-item px-3">
-                                            <a href=""
-                                               class="menu-link px-3">Edit</a>
-                                        </div>
-
-                                        <input type="hidden" data-kt-task-list-filter="task_id"
-                                               value="{{ $transaction->id }}">
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-tasks-table-filter="delete_row">Delete</a>
-                                        </div>
-
-                                    </div>
-
-                                </td>
                                 <!--end::Action=-->
                             </tr>
                         @endforeach

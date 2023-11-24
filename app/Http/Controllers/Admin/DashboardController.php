@@ -14,11 +14,10 @@ class DashboardController extends Controller
         $data = User::query()
             ->where('role', '!=', 'admin')
             ->leftJoin('user_requests', 'users.id', '=', 'user_requests.user_id')
-            ->selectRaw('COALESCE(count(distinct users.id), 0) as total')
+            ->selectRaw('COALESCE(count(users.id), 0) as total')
             ->selectRaw('COALESCE(sum(users.status = "active"), 0) as active')
             ->selectRaw('COALESCE(sum(users.status = "inactive"), 0) as inactive')
             ->selectRaw('COALESCE(sum(user_requests.status = "new"), 0) as new_requests')
-            ->groupBy('users.id')
             ->first();
 
         if (!$data) {

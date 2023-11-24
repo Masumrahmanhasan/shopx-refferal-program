@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -28,8 +29,12 @@ class TransactionController extends Controller
         return view('admin.transactions.all_transactions', compact('transactions'));
     }
 
-    public function changeStatus()
+    public function bulkStatusChange(Request $request): JsonResponse
     {
+        Transaction::query()
+            ->whereIn('id', $request->transaction_id)
+            ->update(['status' => $request->status]);
 
+        return response()->json(['message' => 'Status updated successfully'], 200);
     }
 }

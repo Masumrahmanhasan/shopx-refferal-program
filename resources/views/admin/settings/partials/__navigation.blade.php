@@ -93,29 +93,7 @@
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if(Route::currentRouteName() === 'admin.settings.billings') active @endif" href="{{ route('admin.settings.billings') }}">Billing</a>
             </li>
-            <!--end::Nav item-->
-            <!--begin::Nav item-->
-            <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo1/dist/account/statements.html">Statements</a>
-            </li>
-            <!--end::Nav item-->
-            <!--begin::Nav item-->
-            <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo1/dist/account/referrals.html">Referrals</a>
-            </li>
-            <!--end::Nav item-->
-            <!--begin::Nav item-->
-            <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo1/dist/account/api-keys.html">API
-                    Keys</a>
-            </li>
-            <!--end::Nav item-->
-            <!--begin::Nav item-->
-            <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                   href="../../demo1/dist/account/logs.html">Logs</a>
-            </li>
-            <!--end::Nav item-->
+
         </ul>
         <!--begin::Navs-->
     </div>

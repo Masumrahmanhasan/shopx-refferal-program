@@ -42,20 +42,23 @@
     </div>
     <!--end::Page-->
 </div>
-<script>var hostUrl = "assets/";</script>
+<script>
+    var hostUrl = "assets/";
+    var token = {{ csrf_field() }};
+</script>
 
 <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('js/scripts.bundle.js') }}"></script>
 
 <script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 @yield('scripts')
 
-<script src="{{ asset('js/widgets.bundle.js') }}"></script>
-<script src="{{ asset('js/custom/widgets.js') }}"></script>
-<script src="{{ asset('js/custom/apps/chat/chat.js') }}"></script>
+{{--<script src="{{ asset('js/widgets.bundle.js') }}"></script>--}}
+{{--<script src="{{ asset('js/custom/widgets.js') }}"></script>--}}
+{{--<script src="{{ asset('js/custom/apps/chat/chat.js') }}"></script>--}}
 
 
 </body>

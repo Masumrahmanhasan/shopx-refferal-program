@@ -106,12 +106,16 @@ class User extends Authenticatable
 
     public function scopeCheckWithdrawValidity()
     {
+        $activeReferralCount = 0;
         $referrals = UserReferrel::query()
             ->where('user_id', $this->id)
             ->where('generation', 'first')
-            ->count();
-
-        return $referrals >= 5;
+            ->each(function ($referral) use (&$activeReferralCount) {
+                if ($referral->associate->status === 'active'){
+                    $activeReferralCount++;
+                }
+            });
+        return $activeReferralCount >= 5;
     }
 
     public function referrals(): HasMany

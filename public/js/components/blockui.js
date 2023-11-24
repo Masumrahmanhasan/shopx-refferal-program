@@ -50,7 +50,7 @@ var KTBlockUI = function(element, options) {
         }
 
         var isPage = (the.element.tagName === 'BODY');
-       
+
         var position = KTUtil.css(the.element, 'position');
         var overflow = KTUtil.css(the.element, 'overflow');
         var zIndex = isPage ? 10000 : 1;
@@ -58,7 +58,7 @@ var KTBlockUI = function(element, options) {
         if (the.options.zIndex > 0) {
             zIndex = the.options.zIndex;
         } else {
-            if (KTUtil.css(the.element, 'z-index') != 'auto') {
+            if (KTUtil.css(the.element, 'z-index') !== 'auto') {
                 zIndex = KTUtil.css(the.element, 'z-index');
             }
         }
@@ -70,14 +70,14 @@ var KTBlockUI = function(element, options) {
             the.positionChanged = true;
         }
 
-        if (the.options.overflow === 'hidden' && overflow === 'visible') {           
+        if (the.options.overflow === 'hidden' && overflow === 'visible') {
             KTUtil.css(the.element, 'overflow', 'hidden');
             the.overflowChanged = true;
         }
 
-        the.overlayElement = document.createElement('DIV');    
+        the.overlayElement = document.createElement('DIV');
         the.overlayElement.setAttribute('class', 'blockui-overlay ' + the.options.overlayClass);
-        
+
         the.overlayElement.innerHTML = the.options.message;
 
         KTUtil.css(the.overlayElement, 'z-index', zIndex);
@@ -94,7 +94,7 @@ var KTBlockUI = function(element, options) {
         }
 
         the.element.classList.add('blockui');
-        
+
         if (the.positionChanged) {
             KTUtil.css(the.element, 'position', '');
         }
@@ -105,7 +105,7 @@ var KTBlockUI = function(element, options) {
 
         if (the.overlayElement) {
             KTUtil.remove(the.overlayElement);
-        }        
+        }
 
         the.blocked = false;
 

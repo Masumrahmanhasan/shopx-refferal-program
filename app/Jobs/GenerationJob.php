@@ -73,7 +73,7 @@ class GenerationJob implements ShouldQueue
                 if ($second_generation_affiliate) {
 
                     $add_third_balance = BalanceTransaction::query()->create([
-                        'balance' => 25,
+                        'balance' => 15,
                         'from_user' => $this->user->id,
                         'to_user' => $second_generation_affiliate->id
                     ]);
