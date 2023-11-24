@@ -222,7 +222,7 @@
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href=""
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"
                                                class="menu-link px-3">Edit</a>
                                         </div>
                                         <input type="hidden" data-kt-users-list-filter="user_id"

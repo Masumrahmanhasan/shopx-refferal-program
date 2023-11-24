@@ -57,9 +57,34 @@ class UserController extends Controller
         Media::upload($user, $request->file('avatar'), 'media/user/avatar', 'avatar');
         return response()->json(['message' => 'User created successfully'], 200);
     }
+
+    public function edit(User $user)
+    {
+        $users = User::query()
+            ->where('status', 'active')
+            ->get();
+
+        return view('admin.users.edit', compact('users', 'user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user->update([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'status' => $request->input('status'),
+        ]);
+
+        if ($request->filled('password')) {
+
+        }
+    }
+
     /**
      * @return Factory|View|Application
-     */
+     **/
     public function requested(): Factory|View|Application
     {
         $users = User::query()->with('avatar', 'activation.transaction')
