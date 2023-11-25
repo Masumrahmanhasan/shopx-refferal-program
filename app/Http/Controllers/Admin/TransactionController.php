@@ -35,6 +35,14 @@ class TransactionController extends Controller
             ->whereIn('id', $request->transaction_id)
             ->update(['status' => $request->status]);
 
+        if ($request->status === 'rejected') {
+            Transaction::query()->whereIn('id', $request->transaction_id)
+                ->where('status', 'rejected')
+                ->each(function ($transaction) {
+                    $transaction->user->increment('balance', $transaction->amount);
+                });
+        }
+
         return response()->json(['message' => 'Status updated successfully'], 200);
     }
 }

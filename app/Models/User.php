@@ -130,7 +130,7 @@ class User extends Authenticatable
 
     public function activation(): HasOne
     {
-        return $this->hasOne(UserRequest::class);
+        return $this->hasOne(UserRequest::class)->whereNot('status', 'reject');
     }
 
     public function tasks(): BelongsToMany

@@ -57,4 +57,9 @@ class PaymentSection extends Component
             $this->gateway = 'nagad';
         }
     }
+
+    public function copyToClipboard($text)
+    {
+        $this->dispatch('clipboard:copy', ['text' => $text]);
+    }
 }

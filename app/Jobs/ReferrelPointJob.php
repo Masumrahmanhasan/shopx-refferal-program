@@ -27,6 +27,6 @@ class ReferrelPointJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $this->user->
+
     }
 }

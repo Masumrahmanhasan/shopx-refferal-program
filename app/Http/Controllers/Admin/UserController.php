@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Jobs\ReferrelPointJob;
 use App\Models\Media;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Models\UserRequest;
 use Illuminate\Contracts\Foundation\Application;
@@ -75,11 +76,13 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'status' => $request->input('status'),
+            'referred_by' => $request->input('referred_by')
         ]);
 
         if ($request->filled('password')) {
-
+            $user->update(['password' => $request->input('password')]);
         }
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -89,7 +92,7 @@ class UserController extends Controller
     {
         $users = User::query()->with('avatar', 'activation.transaction')
             ->where('status', 'inactive')
-            ->whereHas('activation', function($query) {
+            ->whereHas('activation', function ($query) {
                 return $query->whereNot('status', 'reject');
             })
             ->paginate(10);
@@ -100,10 +103,9 @@ class UserController extends Controller
     public function approve(User $user): \Illuminate\Http\RedirectResponse
     {
         $user->update(['status' => 'active'])
-            ->activation
+            ->activation()
             ->update(['status' => 'approved']);
 
-        ReferrelPointJob::dispatchSync($user);
         return redirect()->back();
     }
 
@@ -121,17 +123,19 @@ class UserController extends Controller
 
     public function bulkStatusChange(Request $request)
     {
-        if ($request->status === 'approved') {
-            UserRequest::query()
-                ->whereIn('user_id', $request->user_id)
-                ->update(['status' => $request->status]);
-            User::query()->whereIn('id', $request->user_id)->update(['status' => 'active']);
-            return response()->json(['message' => 'Status updated successfully'], 200);
-        }
-
         UserRequest::query()
             ->whereIn('user_id', $request->user_id)
             ->update(['status' => $request->status]);
+
+        Transaction::query()->whereIn('id', function ($query) use ($request) {
+            $query->select('transaction_id')
+                ->from('user_requests')
+                ->whereIn('user_id', $request->user_id);
+        })->update(['status' => $request->status]);
+
+        if ($request->status === 'approved') {
+            User::query()->whereIn('id', $request->user_id)->update(['status' => 'active']);
+        }
 
         return response()->json(['message' => 'Status updated successfully'], 200);
     }

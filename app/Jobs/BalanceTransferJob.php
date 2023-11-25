@@ -35,7 +35,7 @@ class BalanceTransferJob implements ShouldQueue
             $user = User::query()->where('id', $balance->from_user)->first();
 
             if (($user?->status === 'active') && (auth()->user()->status === 'active')) {
-                auth()->user()->addBalance($balance->balance);
+                auth()->user()?->addBalance($balance->balance);
                 $balance->delete();
             }
         }

@@ -215,12 +215,13 @@ var KTAppSaveUser = function () {
                         submitButton.disabled = true;
 
                         const formData = new FormData(form);
+                        formData.append('_method', 'PATCH');
                         const formDataObject = {};
                         formData.forEach((value, key) => {
                             formDataObject[key] = value;
                         });
-
-                        axios.post(`/admin/users/${id}/edit`, formDataObject, {
+                        const id = document.querySelector('[data-kt-users-list-filter="user_id"]').value;
+                        axios.post(`/admin/users/${id}`, formDataObject, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',
                             },
@@ -277,13 +278,7 @@ var KTAppSaveUser = function () {
     return {
         init: function () {
             // Init forms
-            initQuill();
-            initTagify();
-            // initSlider();
-            // initFormRepeater();
-            // initDropzone();
             initConditionsSelect2();
-
             // Handle forms
             handleStatus();
             handleConditions();

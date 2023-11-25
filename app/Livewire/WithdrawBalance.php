@@ -18,6 +18,11 @@ class WithdrawBalance extends Component
     public int $amount;
     public string $gateway;
 
+    public function __construct()
+    {
+        $this->gateway = ''; // Initialize $gateway in the constructor
+    }
+
     /**
      * validation rules
      *
@@ -27,7 +32,7 @@ class WithdrawBalance extends Component
     {
         return [
             'account' => 'required',
-            'amount' => 'required|integer|min:200|max:'.auth()->user()->balance,
+            'amount' => 'required|integer|min:200|max:' . auth()->user()->balance,
             'gateway' => 'required'
         ];
     }
@@ -40,7 +45,12 @@ class WithdrawBalance extends Component
             ->get();
         $balance = Auth::user()->balance;
 
-        return view('livewire.withdraw-balance', ['transactions' => $transactions, 'balance' => $balance]);
+        return view('livewire.withdraw-balance',
+            [
+                'transactions' => $transactions,
+                'balance' => $balance,
+                'gateway' => $this->gateway
+            ]);
     }
 
     public function openModal()
@@ -56,6 +66,11 @@ class WithdrawBalance extends Component
     public function closeModal()
     {
         $this->balanceWithdrawModal = false;
+    }
+
+    public function selectGateway($gateway)
+    {
+        $this->gateway = $gateway;
     }
 
     public function withdrawBalance()

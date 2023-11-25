@@ -128,15 +128,35 @@
             form.submit();
         }
     }
+
+    function copyToClipboard(code) {
+        console.log(code);
+        const referralCode = document.getElementById('referralCode');
+        const tempInput = document.createElement('input');
+        document.body.appendChild(tempInput);
+        tempInput.value = referralCode.textContent;
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        alert('Code Copied to clipboard!');
+    }
 </script>
 
 <script>
-    window.addEventListener('swal:clipboardCopied', event => {
+    window.addEventListener('clipboard:copy', event => {
 
+        console.log(event.detail[0].text)
+        const tempInput = document.createElement('input');
+        document.body.appendChild(tempInput);
+        tempInput.value = event.detail[0].text;
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
         Swal.fire({
-            title: event.detail[0].title,
-            text: event.detail[0].text,
-            icon: event.detail[0].type,
+            title: 'Copied',
+            text: 'Number Copied to Clipboard',
+            icon: 'success',
         });
     })
 

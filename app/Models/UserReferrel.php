@@ -15,4 +15,9 @@ class UserReferrel extends Model
     {
         return $this->belongsTo(User::class, 'referrel_id');
     }
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class);
+    }
 }

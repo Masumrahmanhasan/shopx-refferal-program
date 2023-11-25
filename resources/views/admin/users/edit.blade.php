@@ -64,7 +64,8 @@
         <div id="kt_content_container" class="container-xxl">
             <!--begin::Form-->
             <div class="col-xl-8 g-xl-16">
-                <form id="kt_ecommerce_add_user_form" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
+                <form id="kt_ecommerce_add_user_form" class="form d-flex flex-column flex-lg-row"
+                      enctype="multipart/form-data">
                     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
 
                         <div class="d-flex flex-column gap-7 gap-lg-10">
@@ -92,7 +93,7 @@
                                                                type="radio"
                                                                name="role" value="user"
                                                                @if($user->role === 'user')
-                                                               checked="checked"
+                                                                   checked="checked"
                                                                @endif
                                                         />
                                                     </span>
@@ -144,10 +145,13 @@
                                         <label class="required form-label">Refferel</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select class="form-select" name="referred_by" data-kt-select2="true" data-placeholder="Select Referral" data-allow-clear="true">
+                                        <select class="form-select" name="referred_by" data-kt-select2="true"
+                                                data-placeholder="Select Referral" data-allow-clear="true">
                                             <option></option>
                                             @foreach($users as $item)
-                                                <option @if($item->referral_id === $user->referred_by) selected="selected" @endif value="{{ $item->referral_id }}">{{ $item->username }}</option>
+                                                <option
+                                                    @if($item->referral_id === $user->referred_by) selected="selected"
+                                                    @endif value="{{ $item->referral_id }}">{{ $item->username }}</option>
                                             @endforeach
 
                                         </select>
@@ -226,12 +230,18 @@
                                         <label class="required form-label">Status</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select class="form-select mb-2" name="status" data-control="select2" data-hide-search="true"
+                                        <select class="form-select mb-2" name="status" data-control="select2"
+                                                data-hide-search="true"
                                                 data-placeholder="Select an option"
                                                 id="kt_ecommerce_add_product_store_template">
                                             <option></option>
-                                            <option value="active" @if($user->status === 'active') selected="selected" @endif>Active</option>
-                                            <option value="inactive" @if($user->status === 'inactive') selected="selected" @endif>Inactive</option>
+                                            <option value="active"
+                                                    @if($user->status === 'active') selected="selected" @endif>Active
+                                            </option>
+                                            <option value="inactive"
+                                                    @if($user->status === 'inactive') selected="selected" @endif>
+                                                Inactive
+                                            </option>
                                         </select>
                                         <!--end::Input-->
                                         <!--begin::Description-->
@@ -272,13 +282,16 @@
                         <!--end::Tab content-->
                         <div class="d-flex justify-content-end">
                             <!--begin::Button-->
+                            <input type="hidden" data-kt-users-list-filter="user_id" value="{{ $user->id }}"/>
+
                             <a href="" id="kt_ecommerce_add_user_cancel" class="btn btn-light me-5">Cancel</a>
                             <!--end::Button-->
                             <!--begin::Button-->
                             <button type="submit" id="kt_ecommerce_add_user_submit" class="btn btn-primary">
                                 <span class="indicator-label">Save Changes</span>
                                 <span class="indicator-progress">Please wait...
-                                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                </span>
                             </button>
                             <!--end::Button-->
                         </div>

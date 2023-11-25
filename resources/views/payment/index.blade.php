@@ -29,16 +29,4 @@
 
     </div>
 
-    <script>
-
-        Livewire.on('text-copied', (data) => {
-            const textField = document.createElement('textarea');
-            textField.innerText = data.text;
-            document.body.appendChild(textField);
-            textField.select();
-            document.execCommand('copy');
-            document.body.removeChild(textField);
-        });
-    </script>
-
 </x-app-layout>
