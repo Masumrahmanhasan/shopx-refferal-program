@@ -71,4 +71,24 @@ class SettingsController extends Controller
             'message' => 'Password has been changed successfully'
         ]);
     }
+
+    public function websiteSettings()
+    {
+        return view('admin.settings.website');
+    }
+
+    public function websiteSettingsUpdate(Request $request)
+    {
+        $keys = $request->only('bkash_content_1', 'bkash_content_2', 'nagad_content_1', 'nagad_content_2', 'telegram_content');
+        foreach ($keys as $key => $value) {
+            Setting::query()->updateOrInsert(
+                ['key' => $key],  // Search condition
+                ['value' => $value] // Values to update or insert
+            );
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Settings has been changed successfully'
+        ]);
+    }
 }

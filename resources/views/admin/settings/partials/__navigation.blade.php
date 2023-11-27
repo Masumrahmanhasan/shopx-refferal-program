@@ -94,6 +94,10 @@
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if(Route::currentRouteName() === 'admin.settings.billings') active @endif" href="{{ route('admin.settings.billings') }}">Billing</a>
             </li>
 
+            <li class="nav-item mt-2">
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if(Route::currentRouteName() === 'admin.websiteSettings') active @endif" href="{{ route('admin.websiteSettings') }}">Website Settings</a>
+            </li>
+
         </ul>
         <!--begin::Navs-->
     </div>

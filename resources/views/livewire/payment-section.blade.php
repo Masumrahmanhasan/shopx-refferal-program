@@ -31,9 +31,8 @@
             <div class="bg-[#60a5fa] mt-5 mb-5 p-7 rounded-xl text-center sm:px-4 py-5">
 
                 <h3 class="text-xl text-white border-b border-solid border-white pb-5 mb-5 sm:text-lg">
-                    নিচের বিকাশ
-                    নাম্বারটি কপি করে আপনার বিকাশ এপ্স থেকে পাশে উল্লেখিত ফি Make Payment করুন। আপনার
-                    {{ env('BKASH_PAYMENT_TYPE') }} এর পরিমান: ৳{{ env('ACTIVATION_AMOUNT') }}</h3>
+                    {{ get_settings('bkash_content_1') }}
+                </h3>
 
                 <div class="bg-white shadow-lg rounded-xl">
                     <img src="/images/bkash.png" alt="" class="w-32 rounded-xl p-4 m-auto">
@@ -52,11 +51,7 @@
                 </h5>
 
                 <p class="mt-5 text-white">
-                    উপরের বিকাশ নাম্বারে উল্লেখিত ফি {{ env('BKASH_PAYMENT_TYPE') }} করার পর নিচের ২ টা
-                    খালি ঘর পূরন করুন। ১ম
-                    খালি ঘরে আপনার বিকাশ নাম্বারটি দিন। ২য় খালি ঘরে আপনি
-                    ফি {{ env('BKASH_PAYMENT_TYPE') }} করার পর {{ env('BKASH_PAYMENT_TYPE') }} করা
-                    মেসেজের ট্রানজেকশন নাম্বারটি কপি করে এখানে দিন এর পর ভেরিফাই এ ক্লীক করুন।
+                    {{ get_settings('bkash_content_2') }}
                 </p>
 
             </div>
@@ -65,10 +60,8 @@
             <div class="bg-[#FF5C00] mt-5 mb-5 p-7 rounded-xl text-center sm:px-4 py-5">
 
                 <h3 class="text-xl text-white border-b border-solid border-white pb-5 mb-5 sm:text-lg">
-                    নিচের নগদ
-                    নাম্বারটি কপি করে আপনার নগদ এপ্স থেকে পাশে উল্লেখিত
-                    ফি {{ env('NAGAD_PAYMENT_TYPE') }} করুন। আপনার
-                    {{ env('NAGAD_PAYMENT_TYPE') }} এর পরিমান: ৳{{ env('ACTIVATION_AMOUNT') }}</h3>
+                    {{ get_settings('nagad_content_1') }}
+                </h3>
 
                 <div class="bg-white shadow-lg rounded-xl">
                     <img src="/images/nagod.png" alt="" class="w-32 rounded-xl p-4 m-auto">
@@ -87,11 +80,7 @@
                 </h5>
 
                 <p class="mt-5 text-white">
-                    উপরের নগদ নাম্বারে উল্লেখিত ফি {{ env('NAGAD_PAYMENT_TYPE') }} করার পর নিচের ২ টা
-                    খালি ঘর পূরন করুন। ১ম
-                    খালি ঘরে আপনার নগদ নাম্বারটি দিন। ২য় খালি ঘরে আপনি
-                    ফি {{ env('NAGAD_PAYMENT_TYPE') }} করার পর {{ env('NAGAD_PAYMENT_TYPE') }} করা
-                    মেসেজের ট্রানজেকশন নাম্বারটি কপি করে এখানে দিন এর পর ভেরিফাই এ ক্লীক করুন।
+                    {{ get_settings('nagad_content_2') }}
                 </p>
 
             </div>

@@ -34,10 +34,15 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('supports', SupportController::class);
 
     Route::get('/settings', [SettingsController::class, 'profile'])->name('settings.profile');
+
     Route::get('/billings', [SettingsController::class, 'billings'])->name('settings.billings');
     Route::post('/billings/update', [SettingsController::class, 'billingUpdate'])->name('settings.billings.update');
+
     Route::post('/update-profile', [SettingsController::class, 'updateProfile'])->name('update.profile');
     Route::post('/update-password', [SettingsController::class, 'updatePassword'])->name('update.password');
+
+    Route::get('/website-settings', [SettingsController::class, 'websiteSettings'])->name('websiteSettings');
+    Route::post('/website-settings/update', [SettingsController::class, 'websiteSettingsUpdate'])->name('websiteSettings.update');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
