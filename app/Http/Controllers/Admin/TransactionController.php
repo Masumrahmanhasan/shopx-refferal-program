@@ -14,7 +14,7 @@ class TransactionController extends Controller
         $transactions = Transaction::query()
             ->with('user')
             ->where('type', 'withdraw')
-            ->whereNot('status', 'approved')
+            ->whereNotIn('status', ['approved', 'rejected'])
             ->get();
 
         return view('admin.transactions.withdraw_request', compact('transactions'));
