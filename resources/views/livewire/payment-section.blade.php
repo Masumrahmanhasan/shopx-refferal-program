@@ -104,10 +104,10 @@
                         </div>
 
                         <div class="">
-                            <label class="text-sm">@if($tab === 1)বিকাশ @else নগদ @endif -পেমেন্ট এর ট্রান্সাকশন নম্বরটি কত? <span
+                            <label class="text-sm">@if($tab === 1)বিকাশ @else নগদ @endif -পেমেন্ট এর ট্রান্জেকশন নম্বরটি কত? <span
                                     class="text-red-600 text-lg">*</span> </label>
                             <input type="text" wire:model="trxn_id"
-                                   placeholder="পেমেন্ট এর ট্রান্সাকশন নম্বরটি প্রদান করুন"
+                                   placeholder="পেমেন্ট এর ট্রান্জেকশন নম্বরটি প্রদান করুন"
                                    class="w-full rounded-lg mt-2 text-sm py-3 px-5">
                             @error('trxn_id')
                             <span class="text-red-500">{{ $message }}</span>
