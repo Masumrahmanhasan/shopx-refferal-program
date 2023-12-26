@@ -22,15 +22,21 @@ class TaskList extends Component
     public function completeTask($task)
     {
         if (auth()->check() && auth()->user()->status === 'active') {
-            auth()->user()->increment('balance', $task['price']);
-            auth()->user()->tasks()->attach($task['id']);
 
-            $url = $task['url'];
-            $reloadParameter = '?reload=true';
-            $this->dispatch('openNewTab', [$url . $reloadParameter]);
+            $task = $user->tasks()->find($task['id']);
+
+            if (!$task) {
+                auth()->user()->increment('balance', $task['price']);
+                auth()->user()->tasks()->attach($task['id']);
+
+                $url = $task['url'];
+                $reloadParameter = '?reload=true';
+                $this->dispatch('openNewTab', [$url . $reloadParameter]);
+            }
+
+            return redirect()->route('task');
 
         } else {
-
             return redirect()->route('payment.index');
         }
     }
