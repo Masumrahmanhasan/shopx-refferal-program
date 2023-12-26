@@ -23,9 +23,9 @@ class TaskList extends Component
     {
         if (auth()->check() && auth()->user()->status === 'active') {
 
-            $task = auth()->user()->tasks()->find($task['id']);
+            $exists = auth()->user()->tasks()->find($task['id']);
 
-            if (!$task) {
+            if (!$exists) {
                 auth()->user()->increment('balance', $task['price']);
                 auth()->user()->tasks()->attach($task['id']);
 
