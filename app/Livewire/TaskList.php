@@ -11,7 +11,7 @@ class TaskList extends Component
     public function render()
     {
         $completedTaskIds = auth()->user()->tasks->pluck('id')->toArray();
-        $tasks = Task::query()->whereNotIn('id', $completedTaskIds)->paginate(10);
+        $tasks = Task::query()->whereNotIn('id', $completedTaskIds)->get();
         return view('livewire.task-list', ['tasks' => $tasks]);
     }
 
