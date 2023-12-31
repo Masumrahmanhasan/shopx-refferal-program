@@ -122,7 +122,7 @@
                                 </div>
                             </th>
                             <th class="min-w-125px">User</th>
-                            <th class="min-w-125px">Role</th>
+                            <th class="min-w-125px">User Id</th>
                             <th class="min-w-125px">Sponsored By</th>
                             <th class="min-w-125px">Balance</th>
                             <th class="min-w-125px">Status</th>
@@ -171,8 +171,8 @@
                                 </td>
                                 <!--end::User=-->
                                 <!--begin::Role=-->
-                                <td>{{ $user->role }}</td>
-                                <td>{{ $user->sponsored_by?->username }}</td>
+                                <td>{{ $user->referral_id }}</td>
+                                <td>{{ $user->sponsored_by?->referral_id }}</td>
                                 <!--end::Role=-->
                                 <!--begin::Last login=-->
                                 <td>

@@ -18,7 +18,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::post('/users/bulk-status-change', [UserController::class, 'bulkStatusChange'])->name('users.change.status');
-    Route::post('/users/bulk-delete', [UserController::class, 'bulkDelete'])->name('users.change.status');
+    Route::post('/users/bulk-delete', [UserController::class, 'bulkDelete'])->name('users.bulk.delete');
     Route::get('/users/unverified', [UserController::class, 'unverified'])->name('users.unverified');
     Route::get('/users/waiting-verification', [UserController::class, 'requested'])->name('users.requested');
     Route::post('/users/{user}/approve', [UserController::class, 'approve'])->name('users.approve');
