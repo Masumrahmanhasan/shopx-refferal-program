@@ -14,11 +14,12 @@
             </span>
 
             <h4 class="h5 fs-14 mb-1 fw-700 text-dark">{{ Auth::user()->username }}</h4>
+            <strong>{{ Auth::user()->referral_id }}</strong>
             <div class="text-truncate opacity-60 fs-12">Joined: {{ Auth::user()->created_at }}</div>
             <div class="text-truncate opacity-60 fs-12 font-semibold">Sponsored By:
                 <span>
                     {{ Auth::user()->sponsored_by?->username }}
-                    ({{ Auth::user()->sponsored_by?->referral_id }})
+                    ({{ Auth::user()->referred_by }})
                 </span>
             </div>
 

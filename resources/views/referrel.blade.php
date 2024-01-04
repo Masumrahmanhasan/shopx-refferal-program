@@ -8,25 +8,52 @@
         <div class="bg-gray-100">
             <div class="bg-white border border-gray-300 p-4 rounded-lg shadow-md">
                 <h3 class="text-2xl font-semibold text-gray-800 mb-4">Generation Referral Counts</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 gap-4">
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
-                        <div>
-                            <p class="text-lg font-semibold mb-2">1st Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->first }}</p>
+                        <p class="text-lg font-semibold mb-2">1st Generation</p>
+                        <div class="flex justify-between w-3/4 mt-2">
+                            <div>
+                                <p class="text-lg font-semibold mb-2">Active</p>
+                                <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->first_active }}</p>
+                            </div>
+
+                            <div>
+                                <p class="text-lg font-semibold mb-2">Inactive</p>
+                                <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->first_inactive }}</p>
+                            </div>
                         </div>
                     </div>
+
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
-                        <div>
-                            <p class="text-lg font-semibold mb-2">2nd Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->second }}</p>
+                        <p class="text-lg font-semibold mb-2">2nd Generation</p>
+                        <div class="flex justify-between w-3/4 mt-2">
+                            <div>
+                                <p class="text-lg font-semibold mb-2">Active</p>
+                                <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->second_active }}</p>
+                            </div>
+
+                            <div>
+                                <p class="text-lg font-semibold mb-2">Inactive</p>
+                                <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->second_inactive }}</p>
+                            </div>
                         </div>
                     </div>
+
                     <div class="flex flex-col items-center justify-center bg-gray-200 p-4 rounded-md">
-                        <div>
-                            <p class="text-lg font-semibold mb-2">3rd Generation</p>
-                            <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->third }}</p>
+                        <p class="text-lg font-semibold mb-2">3rd Generation</p>
+                        <div class="flex justify-between w-3/4 mt-2">
+                            <div>
+                                <p class="text-lg font-semibold mb-2">Active</p>
+                                <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->third_active }}</p>
+                            </div>
+
+                            <div>
+                                <p class="text-lg font-semibold mb-2">Inactive</p>
+                                <p class="text-4xl font-bold text-blue-500 text-center">{{ $data->third_inactive }}</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 

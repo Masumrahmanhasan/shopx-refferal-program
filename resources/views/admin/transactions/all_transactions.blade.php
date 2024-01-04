@@ -78,7 +78,7 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" data-kt-task-table-filter="search"
+                            <input type="text" data-kt-transactions-table-filter="search"
                                    class="form-control form-control-solid w-250px ps-14" placeholder="Search user"/>
                         </div>
                         <!--end::Search-->
@@ -102,7 +102,7 @@
                 <!--begin::Card body-->
                 <div class="card-body py-4">
                     <!--begin::Table-->
-                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_tasks">
+                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_all_transaction">
                         <!--begin::Table head-->
                         <thead>
                         <!--begin::Table row-->
@@ -180,8 +180,7 @@
 
                                 <!--begin::Two step=-->
                                 <td>
-                                    <div
-                                        class="badge badge-light-success fw-bolder">{{ ucfirst($transaction->status) }}</div>
+                                    <div class="badge @if($transaction->status === 'rejected')badge-light-danger @else badge-light-success @endif fw-bolder">{{ ucfirst($transaction->status) }}</div>
                                 </td>
 
                                 <!--end::Action=-->
@@ -196,4 +195,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/custom/apps/transactions/all_transactions.js') }}"></script>
 @endsection
