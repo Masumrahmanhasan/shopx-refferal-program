@@ -234,6 +234,10 @@
                                                data-kt-users-table-filter="delete_row">Delete</a>
                                         </div>
 
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('impersonate', $user->id) }}" class="menu-link px-3">Login As this</a>
+                                        </div>
+
                                     </div>
                                     <!--end::Menu-->
                                 </td>

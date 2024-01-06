@@ -14,7 +14,7 @@
             </span>
 
             <h4 class="h5 fs-14 mb-1 fw-700 text-dark">{{ Auth::user()->username }}</h4>
-            <strong>{{ Auth::user()->referral_id }}</strong>
+            <strong>User ID: {{ Auth::user()->referral_id }}</strong>
             <div class="text-truncate opacity-60 fs-12">Joined: {{ Auth::user()->created_at }}</div>
             <div class="text-truncate opacity-60 fs-12 font-semibold">Sponsored By:
                 <span>

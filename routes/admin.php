@@ -23,6 +23,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/users/waiting-verification', [UserController::class, 'requested'])->name('users.requested');
     Route::post('/users/{user}/approve', [UserController::class, 'approve'])->name('users.approve');
 
+    Route::post('/tasks/bulk-delete', [TaskController::class, 'bulkDelete'])->name('tasks.bulk.delete');
+
     Route::resource('/users', UserController::class);
     Route::resource('/tasks', TaskController::class);
     Route::resource('/faqs', FaqController::class);

@@ -206,10 +206,18 @@
                                         class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                         data-kt-menu="true">
 
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                                               class="menu-link px-3">Edit</a>
+                                        </div>
 
                                         <input type="hidden" data-kt-users-list-filter="user_id" value="{{ $user->id }}">
                                         <div class="menu-item px-3">
                                             <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
+                                        </div>
+
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('impersonate', $user->id) }}" class="menu-link px-3">Login As this</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>

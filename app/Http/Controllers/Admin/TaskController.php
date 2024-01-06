@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskStoreRequest;
 use App\Models\Media;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -47,5 +49,11 @@ class TaskController extends Controller
             'success' => true,
             'message' => 'Task deleted successfully'
         ]);
+    }
+
+    public function bulkDelete(Request $request)
+    {
+        Task::query()->whereIn('id', $request->task_id)->delete();
+        return response()->json(['message' => 'Tasks Deleted successfully'], 200);
     }
 }

@@ -51,7 +51,7 @@ var KTWAllTransaction = function () {
         datatable = $(table).DataTable({
             "info": false,
             'order': [],
-            "pageLength": 10,
+            "pageLength": 100,
             "lengthChange": false,
             'columnDefs': [
                 {orderable: false, targets: 0}, // Disable ordering on column 0 (checkbox)

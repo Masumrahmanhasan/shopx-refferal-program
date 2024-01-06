@@ -20,9 +20,12 @@ use App\Http\Controllers\User\FaqController;
 |
 */
 
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+Route::impersonate();
 
 Route::get('/dashboard', function () {
     return view('dashboard');

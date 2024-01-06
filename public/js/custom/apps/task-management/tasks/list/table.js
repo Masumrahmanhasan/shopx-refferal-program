@@ -123,21 +123,19 @@ var KTUsersList = function () {
         selectedCount = document.querySelector('[data-kt-task-table-select="selected_count"]');
         const deleteSelected = document.querySelector('[data-kt-task-table-select="delete_selected"]');
 
-        // Toggle delete selected toolbar
-        checkboxes.forEach(c => {
-            // Checkbox on click event
-            c.addEventListener('click', function () {
-                setTimeout(function () {
-                    toggleToolbars();
-                }, 50);
-            });
-        });
-
         // Deleted selected rows
         deleteSelected.addEventListener('click', function () {
 
+            const checkboxValues = [];
+            checkboxes.forEach((checkbox, index) => {
+                if (index !== 0 && checkbox.checked) {
+                    checkboxValues.push(checkbox.value);
+                }
+            });
+
+            console.log(checkboxValues);
             Swal.fire({
-                text: "Are you sure you want to delete selected customers?",
+                text: "Are you sure you want to delete selected tasks?",
                 icon: "warning",
                 showCancelButton: true,
                 buttonsStyling: false,
@@ -150,7 +148,7 @@ var KTUsersList = function () {
             }).then(function (result) {
                 if (result.value) {
                     Swal.fire({
-                        text: "You have deleted all selected customers!.",
+                        text: "You have deleted all selected tasks!.",
                         icon: "success",
                         buttonsStyling: false,
                         confirmButtonText: "Ok, got it!",
@@ -158,14 +156,14 @@ var KTUsersList = function () {
                             confirmButton: "btn fw-bold btn-primary",
                         }
                     }).then(function () {
-                        // Remove all selected customers
-                        checkboxes.forEach(c => {
-                            if (c.checked) {
-                                datatable.row($(c.closest('tbody tr'))).remove().draw();
-                            }
+                        axios.post('/admin/tasks/bulk-delete', {
+                            task_id: checkboxValues,
+                        }).then(response => {
+                            window.location.reload();
+                        }).catch(error => {
+                            window.location.reload();
                         });
 
-                        // Remove header checked box
                         const headerCheckbox = table.querySelectorAll('[type="checkbox"]')[0];
                         headerCheckbox.checked = false;
                     }).then(function () {
@@ -183,6 +181,16 @@ var KTUsersList = function () {
                         }
                     });
                 }
+            });
+        });
+
+        // Toggle delete selected toolbar
+        checkboxes.forEach(c => {
+            // Checkbox on click event
+            c.addEventListener('click', function () {
+                setTimeout(function () {
+                    toggleToolbars();
+                }, 50);
             });
         });
     }

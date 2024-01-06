@@ -36,7 +36,7 @@
                     </div>
                     <div class="mt-4">
                         <p class="text-gray-600">Status: <span
-                                class="text-green-600 font-semibold">{{ ucfirst($transaction->status) }}</span>
+                                class="font-semibold @if($transaction->status === 'rejected') text-red-700 @else text-green-600  @endif">{{ ucfirst($transaction->status) }}</span>
                         </p>
                     </div>
                 </div>
