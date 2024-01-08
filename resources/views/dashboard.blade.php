@@ -18,7 +18,7 @@
                          class="w-16 h-16 mx-auto mb-4">
 
                     <!-- Group Title -->
-                    <h3 class="text-2xl font-semibold text-gray-800 text-center">Join Our Telegram Group</h3>
+
 
                     <!-- Group Description -->
                     <p class="text-gray-600 text-center mt-4">
@@ -28,6 +28,8 @@
                     <p class="text-gray-700 text-center mt-4">
                         {{ get_settings('telegram_content') }}
                     </p>
+
+                    <h3 class="text-2xl font-semibold text-gray-800 text-center">Join Our Telegram Group</h3>
 
                     <!-- Join Button -->
                     <a href="https://t.me/profitworkbd"
