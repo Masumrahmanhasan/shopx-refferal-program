@@ -14,19 +14,16 @@
             <div class="bg-white rounded-lg shadow-md ">
                 <div class="p-4">
                     <!-- Telegram Image -->
-                    <img src="https://theshopx.net/assets/files/telegram.png" alt="Telegram Icon"
-                         class="w-16 h-16 mx-auto mb-4">
-
-                    <!-- Group Title -->
-
-
-                    <!-- Group Description -->
-                    <p class="text-gray-600 text-center mt-4">
-                        Stay updated with the latest news and discussions in our Telegram group.
-                    </p>
 
                     <p class="text-gray-700 text-center mt-4">
                         {{ get_settings('telegram_content') }}
+                    </p>
+
+                    <img src="https://theshopx.net/assets/files/telegram.png" alt="Telegram Icon"
+                         class="w-16 h-16 mx-auto mb-4">
+
+                    <p class="text-gray-600 text-center mt-4">
+                        Stay updated with the latest news and discussions in our Telegram group.
                     </p>
 
                     <h3 class="text-2xl font-semibold text-gray-800 text-center">Join Our Telegram Group</h3>
