@@ -96,6 +96,17 @@
                                 <span class="menu-title">Pending Verification</span>
                             </a>
                         </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link @if(Route::currentRouteName() === 'admin.users.deleted') active @endif"
+                               href="{{ route('admin.users.deleted') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Deleted</span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
 
@@ -152,6 +163,26 @@
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Withdraw Request</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link @if(Route::currentRouteName() === 'admin.transactions.withdraw-request.checking') active @endif"
+                               href="{{ route('admin.transactions.withdraw-request.checking') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Withdraw Request Checking</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link @if(Route::currentRouteName() === 'admin.transactions.withdraw-request.checked') active @endif"
+                               href="{{ route('admin.transactions.withdraw-request.checked') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Withdraw Request Checked</span>
                             </a>
                         </div>
 

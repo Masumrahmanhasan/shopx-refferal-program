@@ -20,7 +20,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/users/bulk-status-change', [UserController::class, 'bulkStatusChange'])->name('users.change.status');
     Route::post('/users/bulk-delete', [UserController::class, 'bulkDelete'])->name('users.bulk.delete');
     Route::get('/users/unverified', [UserController::class, 'unverified'])->name('users.unverified');
-    Route::get('/users/unverified', [UserController::class, 'unverified'])->name('users.unverified');
+    Route::get('/users/deleted', [UserController::class, 'deleted'])->name('users.deleted');
+    Route::post('/users/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::get('/users/waiting-verification', [UserController::class, 'requested'])->name('users.requested');
     Route::post('/users/{user}/approve', [UserController::class, 'approve'])->name('users.approve');
 
@@ -31,6 +32,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('/faqs', FaqController::class);
 
     Route::get('/transactions/withdraw-request', [TransactionController::class, 'index'])->name('transactions.withdraw-request');
+    Route::get('/transactions/withdraw-request/checking', [TransactionController::class, 'checking'])->name('transactions.withdraw-request.checking');
+    Route::get('/transactions/withdraw-request/checked', [TransactionController::class, 'checked'])->name('transactions.withdraw-request.checked');
     Route::post('/transactions/withdraw/bulk-status-change', [TransactionController::class, 'bulkStatusChange'])->name('transactions.withdraw-request.change-status');
     Route::get('/transactions/all-transactions', [TransactionController::class, 'allTransactions'])->name('transactions.approved');
 

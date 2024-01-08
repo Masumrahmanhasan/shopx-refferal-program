@@ -46,6 +46,25 @@ class UserController extends Controller
         return view('admin.users.inactive', compact('users'));
     }
 
+    public function deleted(): Factory|View|Application
+    {
+        $users = User::query()
+            ->with('avatar')
+            ->whereNot('role', 'admin')
+            ->onlyTrashed()
+            ->get();
+
+        return view('admin.users.deleted', compact('users'));
+    }
+
+    public function restore(Request $request)
+    {
+        $user = User::withTrashed()->where('id', $request->input('user_id'))->first();
+        $user->restore();
+
+        return redirect()->route('admin.users.deleted');
+    }
+
     public function show(User $user)
     {
 

@@ -14,10 +14,32 @@ class TransactionController extends Controller
         $transactions = Transaction::query()
             ->with('user')
             ->where('type', 'withdraw')
-            ->whereNotIn('status', ['approved', 'rejected'])
+            ->whereNotIn('status', ['checked', 'approved', 'rejected', 'checking'])
             ->get();
 
         return view('admin.transactions.withdraw_request', compact('transactions'));
+    }
+
+    public function checking()
+    {
+        $transactions = Transaction::query()
+            ->with('user')
+            ->where('type', 'withdraw')
+            ->where('status', 'checking')
+            ->get();
+
+        return view('admin.transactions.withdraw_request_checking', compact('transactions'));
+    }
+
+    public function checked()
+    {
+        $transactions = Transaction::query()
+            ->with('user')
+            ->where('type', 'withdraw')
+            ->where('status', 'checked')
+            ->get();
+
+        return view('admin.transactions.withdraw_request_checked', compact('transactions'));
     }
 
     public function allTransactions()

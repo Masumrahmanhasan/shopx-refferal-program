@@ -90,7 +90,7 @@
                     </div>
                     <!--begin::Card title-->
                     <!--begin::Card toolbar-->
-                    <div class="card-toolbar">
+                    <div class="card-toolbar d-none">
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <!--begin::Add user-->
@@ -222,21 +222,20 @@
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="{{ route('admin.users.edit', $user->id) }}"
-                                               class="menu-link px-3">Edit</a>
+
+
+                                            <form method="POST" action="{{ route('admin.users.restore') }}">
+                                                @csrf
+
+                                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                                <a href="{{ route('admin.users.restore') }}"
+                                                   class="menu-link px-3"
+                                                   onclick="event.preventDefault();
+                                                    this.closest('form').submit();">Restore</a>
+                                            </form>
                                         </div>
                                         <input type="hidden" data-kt-users-list-filter="user_id"
                                                value="{{ $user->id }}">
-
-                                        <div class="menu-item px-3">
-                                            <a href="#"
-                                               class="menu-link px-3"
-                                               data-kt-users-table-filter="delete_row">Delete</a>
-                                        </div>
-
-                                        <div class="menu-item px-3">
-                                            <a href="{{ route('impersonate', $user->id) }}" class="menu-link px-3">Login As this</a>
-                                        </div>
 
                                     </div>
                                     <!--end::Menu-->
