@@ -145,7 +145,7 @@
                                         <a href="#">
                                             <div class="symbol-label">
                                                 @if($transaction->user->thumbnail)
-                                                    <img src="{{ $transaction->user->thumbnail }}"
+                                                    <img src="{{ $transaction->user?->thumbnail }}"
                                                          alt="{{ $transaction->user->username }}"
                                                          class="w-100"/>
                                                 @else
