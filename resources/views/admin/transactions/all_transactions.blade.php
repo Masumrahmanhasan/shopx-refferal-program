@@ -150,7 +150,7 @@
                                                          class="w-100"/>
                                                 @else
                                                     <div
-                                                        class="symbol-label fs-3 bg-light-primary text-danger">{{ substr($transaction->user->username, 0, 1) }}</div>
+                                                        class="symbol-label fs-3 bg-light-primary text-danger">{{ substr($transaction->user?->username, 0, 1) }}</div>
                                                 @endif
                                             </div>
                                         </a>
@@ -159,7 +159,7 @@
                                     <!--begin::User details-->
                                     <div class="d-flex flex-column">
                                         <a href="#"
-                                           class="text-gray-800 text-hover-primary mb-1">{{ $transaction->user->username }}</a>
+                                           class="text-gray-800 text-hover-primary mb-1">{{ $transaction->user?->username }}</a>
                                         <span>{{ $transaction->created_at }}</span>
                                     </div>
                                     <!--begin::User details-->
