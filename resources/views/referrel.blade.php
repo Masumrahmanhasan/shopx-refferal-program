@@ -110,12 +110,12 @@
                                     </svg>
                                 </div>
                                 <div class="ml-4">
-                                    <p class="text-lg font-semibold text-gray-800">{{ $referral->associate->username }}</p>
+                                    <p class="text-lg font-semibold text-gray-800">{{ $referral->associate?->username }}</p>
                                     <p class="text-gray-600">Generation: {{ ucfirst($referral->generation) }}
                                         Generation</p>
                                 </div>
                             </div>
-                            <p class="text-green-600 font-semibold">{{ ucfirst($referral->associate->status) }}</p>
+                            <p class="text-green-600 font-semibold">{{ ucfirst($referral->associate?->status) }}</p>
                         </div>
                     @empty
                         <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
