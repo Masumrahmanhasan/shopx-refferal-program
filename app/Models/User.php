@@ -113,7 +113,7 @@ class User extends Authenticatable
             ->where('user_id', $this->id)
             ->where('generation', 'first')
             ->each(function ($referral) use (&$activeReferralCount) {
-                if ($referral->associate->status === 'active'){
+                if ($referral->associate?->status === 'active'){
                     $activeReferralCount++;
                 }
             });
