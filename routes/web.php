@@ -27,6 +27,8 @@ Route::get('/', function () {
 
 Route::impersonate();
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
